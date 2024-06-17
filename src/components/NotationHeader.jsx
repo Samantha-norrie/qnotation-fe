@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.css';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import InfoSharpIcon from '@mui/icons-material/InfoSharp';
 import { NOTATION_DETAILS } from './Utils';
 
 import styled from "styled-components";
@@ -35,8 +35,8 @@ const NotationHeader = (props) => {
         <Container>
             <p>
                 {NOTATION_DETAILS[Number(notation)].title}
+                <InfoSharpIcon onClick={handleOpen}></InfoSharpIcon>
             </p>
-            <Button onClick={handleOpen}>Open modal</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import NotationsContainer from './components/NotationsContainer';
 import CodeContainer from './components/CodeContainer';
