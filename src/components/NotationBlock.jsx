@@ -28,27 +28,28 @@ const TEMP_MATRIX = [
 ];
 
 const NotationBlock = (props) => {
-  const {notation} = props;
+  const {notationNumber, circuitEquation, matrixEquation} = props;
 
-  var circuitGates = useSelector((state) => state.circuitGates.value);
+
   useEffect(() => {
-    console.log("Circuit gates"+ circuitGates);
-  }, []);
+    console.log("in block");
+    console.log("matrix in block"+ matrixEquation.length);
+  }, [matrixEquation]);
     
       return (
         <Container>
           <NotationHeader 
-            notation={notation}
+            notation={notationNumber}
           />
           {/* TODO fix */}
-          {notation === 0 &&
+          {notationNumber === 0 &&
           <div>
-            <CircuitContainer circuitDetails={circuitGates}/>
+            <CircuitContainer circuitDetails={circuitEquation}/>
           </div>
           }
-          {notation === 2 &&
+          {notationNumber === 2 &&
           <div>
-            <MatrixContainer matrixDetails={TEMP_MATRIX}/>
+            <MatrixContainer matrixDetails={matrixEquation}/>
           </div>
           }
         </Container>

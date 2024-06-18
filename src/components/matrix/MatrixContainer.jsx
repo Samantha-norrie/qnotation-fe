@@ -4,7 +4,7 @@ import Matrix from './Matrix';
 
 const Container = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     max-height: 100%;
     flex-wrap: wrap;
     
@@ -15,9 +15,9 @@ const MatrixContainer = (props) => {
     
       return (
         <Container>
-            {matrixDetails.map(({matrix}, {key}) =>
+            {matrixDetails.map((matrix, key) =>
                 <div>
-                  <Matrix matrix={matrix} key={key}/>
+                  <Matrix matrix={matrix.content} key={key}/>
                 </div>
                 )}
         </Container>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -14,9 +15,9 @@ const Value = styled.p`
 `;
 
 const Qubit = (props) => {
-    const {qubit} = props;
+    const {qubit, key} = props;
       return (
-        <Container>
+        <Container className={key == useSelector((state) => state.currentIndex.value)? "selected": ""}>
             <Value>|{qubit}</Value>
         </Container>
       );

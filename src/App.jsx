@@ -1,8 +1,7 @@
 import './App.css';
-import NotationsContainer from './components/NotationsContainer';
-import CodeContainer from './components/CodeContainer';
+
 import styled from "styled-components";
-import HiddenNotationsColumn from './components/HiddenNotationsColumn';
+import AppContainer from './AppContainer';
 const Container = styled.div`
   background-color: #070F2B;
   width: 100%;
@@ -30,17 +29,8 @@ const CodeContainerWrapper = styled.div`
 
 function App() {
   return (
-    <Container>
-      <HiddenNotationsWrapper>
-        <HiddenNotationsColumn/>
-      </HiddenNotationsWrapper>
-      <NotationsContainerWrapper>
-        <NotationsContainer/>
-      </NotationsContainerWrapper>
-      <CodeContainerWrapper>
-        <CodeContainer/>
-      </CodeContainerWrapper>
-    </Container>
+    <AppContainer/>
+
   );
 }
 

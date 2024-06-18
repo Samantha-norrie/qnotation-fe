@@ -5,7 +5,6 @@ import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { Button } from '@mui/material';
 import { useDispatch} from 'react-redux';
-import { updateCircuitGatesSlice } from '../slices/CircuitGatesSlice';
 axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 
 const InputContainer = styled.div`
@@ -25,7 +24,8 @@ const ButtonContainer = styled.div`
 `;
 
 
-const CodeContainer = () => {
+const CodeContainer = (props) => {
+  const {setCircuitEquation, setMatrixEquation} = props;
   const dispatch = useDispatch();
 
       const getNotationResults = async () => {
@@ -40,9 +40,11 @@ const CodeContainer = () => {
           })
           .then(function (response) {
             var data = response.data;
-            console.log(data.circuit_dirac_gates);
+            console.log(data);
             console.log("data!");
-            dispatch(updateCircuitGatesSlice(data.ciruit_dirac_gates));
+            // dispatch(updateCircuitGatesSlice(data.ciruit_dirac_gates));
+            setCircuitEquation(data.circuit_dirac_gates);
+            setMatrixEquation(data.matrix_gates);
           })
           .catch(function (error) {
             console.log(error);

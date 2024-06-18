@@ -16,3 +16,6 @@ ul {
 .green {
   background: green;
 }
+.selected{
+  color: orange;
+}
