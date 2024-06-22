@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import styled from "styled-components";
 import NotationBlock from './NotationBlock';
@@ -18,10 +18,6 @@ const BlockContainer = styled.ul`
 `;
 const NotationsContainer = (props) => {
 
-    const {currentIndex, setCurrentIndex, circuitEquation, matrixEquation} = props;
-    useEffect(() => {
-      console.log("matrix in container"+ matrixEquation.length);
-    }, [matrixEquation]);
     const [box, setBox] = useState(
         [
           {
@@ -52,7 +48,7 @@ const NotationsContainer = (props) => {
                     {(provided) => (
                       <Notation  ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
                         <div className={box}></div>
-                        <NotationBlock notationNumber={id} circuitEquation={circuitEquation} matrixEquation={matrixEquation}></NotationBlock>
+                        <NotationBlock notationNumber={id} {...props}></NotationBlock>
                       </Notation>
                     )}
                   </Draggable>

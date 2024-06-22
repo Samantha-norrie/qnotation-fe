@@ -1,26 +1,61 @@
 import React from 'react';
 import styled from "styled-components";
 import Matrix from './Matrix';
+import StateVector from './StateVector';
 
-const Container = styled.div`
+const TabContainer = styled.div`
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 100%;
+`;
+const EquationContainer = styled.div`
     display: flex;
     flex-direction: row-reverse;
     max-height: 100%;
     flex-wrap: wrap;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 1rem;
     
+`;
+const StateContainer = styled.div`
+  border-left: solid white;
 `;
 
 const MatrixContainer = (props) => {
-    const {matrixDetails} = props;
-    
+    const {currentIndex, setCurrentIndex, matrixEquation, matrixState} = props;
+    const changeIndex = (key) => {
+      setCurrentIndex(key);
+      console.log("new key "+ key);
+    }
       return (
-        <Container>
-            {matrixDetails.map((matrix, key) =>
-                <div>
-                  <Matrix matrix={matrix.content} key={key}/>
-                </div>
-                )}
-        </Container>
+        <TabContainer>
+          <EquationContainer>
+              {matrixEquation.map((matrix, key) =>
+                  <div onClick={() => changeIndex(key)}>
+                    <Matrix 
+                      matrix={matrix.content} 
+                      key={key} 
+                      currentIndex={currentIndex}
+                      // setCurrentIndex={setCurrentIndex}
+                    />
+                  </div>
+                  )}
+          </EquationContainer>
+          <StateContainer>
+              {/* {matrixState.map((matrix, key) =>
+                  <div> */}
+                {/* <Matrix 
+                  matrix={matrixState[currentIndex].content} 
+                  key={key} 
+                  currentIndex={currentIndex}
+                  setCurrentIndex={setCurrentIndex}
+                /> */}
+                <StateVector stateVector={matrixState.length === 0? []: matrixState[currentIndex].content}/>
+                  {/* </div>
+              )} */}
+          </StateContainer>
+        </TabContainer>
       );
     }
   

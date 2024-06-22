@@ -15,23 +15,23 @@ const Container = styled.div`
     
 `;
 
-const Matrix = (props) => {
-    const {matrix, key, currentIndex, setCurrentIndex} = props;
+const StateVector = (props) => {
+    const {stateVector} = props;
       // const changeIndex = () => {
       //   setCurrentIndex(key);
       //   console.log("new key "+ key);
       // }
       return (
         <Container 
-          className={key === currentIndex? "selected": ""}
+          // className={key === currentIndex? "selected": ""}
           // onClick={() => changeIndex} 
         >
             {
-                matrix.map((row) => 
+                stateVector.map((row) => 
                     <p>{JSON.stringify(row)}</p>
             )}
         </Container>
       );
     }
   
-  export default Matrix;
+  export default StateVector;

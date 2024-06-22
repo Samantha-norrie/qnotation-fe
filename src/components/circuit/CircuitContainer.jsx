@@ -11,13 +11,16 @@ const Container = styled.div`
 `;
 
 const CircuitContainer = (props) => {
-    const {circuitDetails} = props;
-    
+    const {circuitDetails, currentIndex, setCurrentIndex} = props;
+    const changeIndex = (key) => {
+      setCurrentIndex(key);
+      console.log("new key "+ key);
+    }
       return (
         <Container>
             {circuitDetails.map((columnDetails, key) =>
-                <div>
-                  <Column content={columnDetails.content} type={columnDetails.type} key={key}/>
+                <div onClick={() => changeIndex(key)}>
+                  <Column content={columnDetails.content} type={columnDetails.type} key={key} currentIndex={currentIndex}/>
                 </div>
                 )}
         </Container>

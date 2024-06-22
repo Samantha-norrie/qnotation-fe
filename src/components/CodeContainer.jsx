@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import styled from "styled-components";
 import Editor from "@monaco-editor/react";
@@ -25,8 +25,8 @@ const ButtonContainer = styled.div`
 
 
 const CodeContainer = (props) => {
-  const {setCircuitEquation, setMatrixEquation} = props;
-  const dispatch = useDispatch();
+  const {setCircuitEquation, setMatrixEquation, setMatrixState} = props;
+  const [displayTensorProduct, setDisplayTensorProduct] = useState(false);
 
       const getNotationResults = async () => {
 
@@ -35,16 +35,17 @@ const CodeContainer = (props) => {
                 'Content-Type': 'application/json'
             },
             data: {
-            "qc": null 
+            "qc": null,
+            "display_tensor_product": displayTensorProduct
             }
           })
           .then(function (response) {
             var data = response.data;
             console.log(data);
             console.log("data!");
-            // dispatch(updateCircuitGatesSlice(data.ciruit_dirac_gates));
             setCircuitEquation(data.circuit_dirac_gates);
             setMatrixEquation(data.matrix_gates);
+            setMatrixState(data.matrix_state_vectors);
           })
           .catch(function (error) {
             console.log(error);
@@ -60,7 +61,11 @@ const CodeContainer = (props) => {
                 value=""
             />
             <ButtonContainer >
-              <Button variant="contained">Tensor</Button>
+              <Button 
+                variant={displayTensorProduct? "outlined":"contained"} 
+                onClick={()=> setDisplayTensorProduct(!displayTensorProduct)}>
+                  Tensor
+              </Button>
               <Button variant="contained" onClick={getNotationResults}>run</Button>
             </ButtonContainer >
         </InputContainer>

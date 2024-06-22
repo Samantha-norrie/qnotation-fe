@@ -3,9 +3,6 @@ import styled from "styled-components";
 import Gate from './Gate';
 import Qubit from './Qubit';
 import { GATE, QUBIT } from '../Utils';
-import { useDispatch, useSelector} from 'react-redux';
-import { useEffect } from 'react';
-import { updateCurrentIndex } from '../../slices/CurrentIndexSlice';
 
 const Container = styled.div`
     display: flex;
@@ -19,30 +16,22 @@ const Container = styled.div`
     
 `;
 
-const P = styled.p`
-  color: white;
-`;
-
 const Column = (props) => {
-    const {content, type, key} = props;
-    const dispatch = useDispatch();
-    var id = useSelector((state) => state.currentIndex.value)
-    useEffect(() => {
-      console.log("index"+ id);
-    }, []);
-      return (
-        <Container onClick={() => dispatch(updateCurrentIndex(key))}>
+    const {content, type, key, currentIndex} = props;
+
+    return (
+        <Container>
           {type === QUBIT &&
             <div>
             {content.map((colInstance) =>
-              <Qubit qubit={colInstance} key={key}/>
+              <Qubit qubit={colInstance} key={key} currentIndex={currentIndex}/>
             )}
             </div>
           }
-          {type == GATE && 
+          {type === GATE && 
             <div>
               {content.map((colInstance) =>
-                <Gate gate={colInstance.gate} key={key}/>
+                <Gate gate={colInstance.gate} key={key} currentIndex={currentIndex}/>
               )}
             </div>
           }

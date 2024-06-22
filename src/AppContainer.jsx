@@ -33,16 +33,29 @@ const AppContainer = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [circuitEquation, setCircuitEquation] = useState([]);
     const [matrixEquation, setMatrixEquation] = useState([]);
+    const [matrixState, setMatrixState] = useState([]);
     return (
         <Container>
           <HiddenNotationsWrapper>
             <HiddenNotationsColumn/>
           </HiddenNotationsWrapper>
           <NotationsContainerWrapper>
-            <NotationsContainer currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} circuitEquation={circuitEquation} matrixEquation={matrixEquation}/>
+            <NotationsContainer 
+              currentIndex={currentIndex} 
+              setCurrentIndex={setCurrentIndex} 
+              circuitEquation={circuitEquation} 
+              matrixEquation={matrixEquation} 
+              matrixState={matrixState}
+            />
           </NotationsContainerWrapper>
           <CodeContainerWrapper>
-            <CodeContainer currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setCircuitEquation={setCircuitEquation} setMatrixEquation={setMatrixEquation}/>
+            <CodeContainer 
+              // currentIndex={currentIndex} 
+              // setCurrentIndex={setCurrentIndex} 
+              setCircuitEquation={setCircuitEquation} 
+              setMatrixEquation={setMatrixEquation}
+              setMatrixState={setMatrixState}
+            />
           </CodeContainerWrapper>
         </Container>
       );

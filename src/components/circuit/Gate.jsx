@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import gateImage from './single_gate.png';
-import { useSelector } from 'react-redux';
 
 const Container = styled.div`
     height: 20px;
@@ -16,9 +15,9 @@ const Name = styled.p`
 `;
 
 const Gate = (props) => {
-    const {gate, key} = props;
+    const {gate, key, currentIndex} = props;
       return (
-        <Container className={key == useSelector((state) => state.currentIndex.value)? "selected": ""}>
+        <Container className={key == currentIndex? "selected": ""}>
             <Name>{gate}</Name>
         </Container>
       );
