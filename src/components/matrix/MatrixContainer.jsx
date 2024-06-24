@@ -37,23 +37,12 @@ const MatrixContainer = (props) => {
                       matrix={matrix.content} 
                       key={key} 
                       currentIndex={currentIndex}
-                      // setCurrentIndex={setCurrentIndex}
                     />
                   </div>
                   )}
           </EquationContainer>
           <StateContainer>
-              {/* {matrixState.map((matrix, key) =>
-                  <div> */}
-                {/* <Matrix 
-                  matrix={matrixState[currentIndex].content} 
-                  key={key} 
-                  currentIndex={currentIndex}
-                  setCurrentIndex={setCurrentIndex}
-                /> */}
                 <StateVector stateVector={matrixState.length === 0? []: matrixState[currentIndex].content}/>
-                  {/* </div>
-              )} */}
           </StateContainer>
         </TabContainer>
       );

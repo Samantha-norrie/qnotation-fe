@@ -5,7 +5,7 @@ import styled from "styled-components";
 import NotationHeader from './NotationHeader';
 import CircuitContainer from './circuit/CircuitContainer';
 import MatrixContainer from './matrix/MatrixContainer';
-import { GATE, QUBIT } from './Utils';
+import DiracContainer from './dirac/DiracContainer';
 
 const Container = styled.div`
     background-color: #040D12;
@@ -39,7 +39,11 @@ const NotationBlock = (props) => {
           </div>
           }
           {notationNumber === 1 &&
-            <div><p>ww</p></div>
+            <DiracContainer 
+              diracDetails={circuitEquation}
+              currentIndex={currentIndex} 
+              setCurrentIndex={setCurrentIndex}
+            />
           }
           {notationNumber === 2 &&
           <div>
