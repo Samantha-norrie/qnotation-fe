@@ -16,15 +16,11 @@ const Container = styled.div`
 `;
 
 const Matrix = (props) => {
-  const { matrix, key, currentIndex, setCurrentIndex } = props;
-  // const changeIndex = () => {
-  //   setCurrentIndex(key);
-  //   console.log("new key "+ key);
-  // }
+  const { matrix, key, currentIndex} = props;
+
   return (
     <Container
       className={key === currentIndex ? "selected" : ""}
-      // onClick={() => changeIndex}
     >
       {matrix.map((row) => (
         <p>{JSON.stringify(row)}</p>

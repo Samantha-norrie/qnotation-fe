@@ -17,7 +17,7 @@ const Value = styled.p`
 const Qubit = (props) => {
   const { qubit, key, currentIndex } = props;
   return (
-    <Container className={key == currentIndex ? "selected" : ""}>
+    <Container className={key === currentIndex ? "selected" : ""}>
       <Value>|{qubit}</Value>
     </Container>
   );

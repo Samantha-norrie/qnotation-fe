@@ -17,7 +17,7 @@ const Name = styled.p`
 const Gate = (props) => {
   const { gate, key, currentIndex } = props;
   return (
-    <Container className={key == currentIndex ? "selected" : ""}>
+    <Container className={key === currentIndex ? "selected" : ""}>
       <Name>{gate}</Name>
     </Container>
   );
