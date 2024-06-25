@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { Button } from '@mui/material';
-import { useDispatch} from 'react-redux';
+import { STARTING_CODE } from './Utils';
 axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 
 const InputContainer = styled.div`
@@ -25,17 +25,24 @@ const ButtonContainer = styled.div`
 
 
 const CodeContainer = (props) => {
-  const {setCircuitEquation, setMatrixEquation, setMatrixState} = props;
-  const [displayTensorProduct, setDisplayTensorProduct] = useState(false);
+    const {setCircuitEquation, setMatrixEquation, setMatrixState} = props;
+    const [displayTensorProduct, setDisplayTensorProduct] = useState(false);
+    const [code, setCode] = useState(STARTING_CODE);
 
-      const getNotationResults = async () => {
+    const onCodeChange = (value, event) => {
+      console.log("Updated value" + value);
+    }
+
+    const getNotationResults = async () => {
+
+
 
         axios.post("http://127.0.0.1:5000/get_notation_data", {
             headers: {
                 'Content-Type': 'application/json'
             },
             data: {
-            "qc": null,
+            "qc": code,
             "display_tensor_product": displayTensorProduct
             }
           })
@@ -51,14 +58,17 @@ const CodeContainer = (props) => {
             console.log(error);
           });
       };
+
+
     
       return (
         <InputContainer>
             <Editor
                 height="80vh"
-                language="Python"
+                language="python"
                 theme="vs-dark"
-                value=""
+                defaultValue={STARTING_CODE}
+                onChange={onCodeChange}
             />
             <ButtonContainer >
               <Button 

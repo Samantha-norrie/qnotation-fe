@@ -49,9 +49,7 @@ const AppContainer = () => {
             />
           </NotationsContainerWrapper>
           <CodeContainerWrapper>
-            <CodeContainer 
-              // currentIndex={currentIndex} 
-              // setCurrentIndex={setCurrentIndex} 
+            <CodeContainer
               setCircuitEquation={setCircuitEquation} 
               setMatrixEquation={setMatrixEquation}
               setMatrixState={setMatrixState}

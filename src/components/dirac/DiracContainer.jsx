@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import DiracGate from './DiracGate';
+import { EquationContainer, StateContainer, TabContainer } from '../Utils';
 
 const Container = styled.div`
     display: flex;
@@ -21,14 +22,18 @@ const DiracContainer = (props) => {
       console.log("new key "+ key);
     }
       return (
-        <Container>
-            <P>!!!!!</P>
-            {diracDetails.map((columnDetails, key) =>
-                <div onClick={() => changeIndex(key)}>
-                  <DiracGate content={columnDetails.content} type={columnDetails.type} key={key} currentIndex={currentIndex}/>
-                </div>
+        <TabContainer>
+            <EquationContainer>
+                {diracDetails.map((columnDetails, key) =>
+                    <div onClick={() => changeIndex(key)}>
+                    <DiracGate content={columnDetails.content} type={columnDetails.type} key={key} currentIndex={currentIndex}/>
+                    </div>
                 )}
-        </Container>
+            </EquationContainer>
+            <StateContainer>
+                
+            </StateContainer>
+        </TabContainer>
       );
     }
   
