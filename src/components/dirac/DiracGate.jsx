@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import { GATE, QUBIT } from '../Utils';
+import { GATE, QUBIT } from "../Utils";
 
 const Container = styled.div`
     display: flex;
@@ -14,33 +14,31 @@ const Container = styled.div`
     
 `;
 const P = styled.p`
-    color: white;
-    display: inline;
+  color: white;
+  display: inline;
 `;
 
 const DiracGate = (props) => {
-    const {content, type, key, currentIndex} = props;
+  const { content, type, key, currentIndex } = props;
 
-    return (
-        <Container>
-          {type === QUBIT &&
-            <div>
-            {content.map((colInstance) =>
-                <P>{colInstance}</P>
-            )}
-            </div>
-          }
-          {type === GATE && 
-            <div>
-              {content.map((colInstance) =>
-                <P>{colInstance.gate}</P>
-              )}
-            </div>
-          }
+  return (
+    <Container>
+      {type === QUBIT && (
+        <div>
+          {content.map((colInstance) => (
+            <P>{colInstance}</P>
+          ))}
+        </div>
+      )}
+      {type === GATE && (
+        <div>
+          {content.map((colInstance) => (
+            <P>{colInstance.gate}</P>
+          ))}
+        </div>
+      )}
+    </Container>
+  );
+};
 
-
-        </Container>
-      );
-    }
-  
-  export default DiracGate;
+export default DiracGate;

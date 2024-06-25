@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import Gate from './Gate';
-import Qubit from './Qubit';
-import { GATE, QUBIT } from '../Utils';
+import Gate from "./Gate";
+import Qubit from "./Qubit";
+import { GATE, QUBIT } from "../Utils";
 
 const Container = styled.div`
     display: flex;
@@ -17,28 +17,30 @@ const Container = styled.div`
 `;
 
 const Column = (props) => {
-    const {content, type, key, currentIndex} = props;
+  const { content, type, key, currentIndex } = props;
 
-    return (
-        <Container>
-          {type === QUBIT &&
-            <div>
-            {content.map((colInstance) =>
-              <Qubit qubit={colInstance} key={key} currentIndex={currentIndex}/>
-            )}
-            </div>
-          }
-          {type === GATE && 
-            <div>
-              {content.map((colInstance) =>
-                <Gate gate={colInstance.gate} key={key} currentIndex={currentIndex}/>
-              )}
-            </div>
-          }
+  return (
+    <Container>
+      {type === QUBIT && (
+        <div>
+          {content.map((colInstance) => (
+            <Qubit qubit={colInstance} key={key} currentIndex={currentIndex} />
+          ))}
+        </div>
+      )}
+      {type === GATE && (
+        <div>
+          {content.map((colInstance) => (
+            <Gate
+              gate={colInstance.gate}
+              key={key}
+              currentIndex={currentIndex}
+            />
+          ))}
+        </div>
+      )}
+    </Container>
+  );
+};
 
-
-        </Container>
-      );
-    }
-  
-  export default Column;
+export default Column;

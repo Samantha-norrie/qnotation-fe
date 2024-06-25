@@ -1,18 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const currentIndexSlice = createSlice({
-  name: 'currentIndex',
+  name: "currentIndex",
   initialState: {
     value: 0,
   },
   reducers: {
     updateCurrentIndex: (state, action) => {
-      state.value = action.payload
-
-    }
+      state.value = action.payload;
+    },
   },
-})
+});
 
-export const {updateCurrentIndex} = currentIndexSlice.actions;
+export const { updateCurrentIndex } = currentIndexSlice.actions;
 
 export default currentIndexSlice.reducer;

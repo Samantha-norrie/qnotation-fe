@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
 import styled from "styled-components";
-import AppContainer from './AppContainer';
+import AppContainer from "./AppContainer";
 const Container = styled.div`
-  background-color: #070F2B;
+  background-color: #070f2b;
   width: 100%;
   height: 100vh;
   display: grid;
@@ -13,13 +13,13 @@ const Container = styled.div`
 `;
 
 const HiddenNotationsWrapper = styled.div`
-    grid-column-start: 1;
-    grid-column-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
 `;
 
 const NotationsContainerWrapper = styled.div`
-    grid-column-start: 2;
-    grid-column-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
 `;
 
 const CodeContainerWrapper = styled.div`
@@ -28,10 +28,7 @@ const CodeContainerWrapper = styled.div`
 `;
 
 function App() {
-  return (
-    <AppContainer/>
-
-  );
+  return <AppContainer />;
 }
 
 export default App;

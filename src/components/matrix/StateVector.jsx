@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -16,22 +16,21 @@ const Container = styled.div`
 `;
 
 const StateVector = (props) => {
-    const {stateVector} = props;
-      // const changeIndex = () => {
-      //   setCurrentIndex(key);
-      //   console.log("new key "+ key);
-      // }
-      return (
-        <Container 
-          // className={key === currentIndex? "selected": ""}
-          // onClick={() => changeIndex} 
-        >
-            {
-                stateVector.map((row) => 
-                    <p>{JSON.stringify(row)}</p>
-            )}
-        </Container>
-      );
-    }
-  
-  export default StateVector;
+  const { stateVector } = props;
+  // const changeIndex = () => {
+  //   setCurrentIndex(key);
+  //   console.log("new key "+ key);
+  // }
+  return (
+    <Container
+    // className={key === currentIndex? "selected": ""}
+    // onClick={() => changeIndex}
+    >
+      {stateVector.map((row) => (
+        <p>{JSON.stringify(row)}</p>
+      ))}
+    </Container>
+  );
+};
+
+export default StateVector;

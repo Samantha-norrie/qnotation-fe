@@ -1,18 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const circuitGatesSlice = createSlice({
-  name: 'circuitGates',
+  name: "circuitGates",
   initialState: {
-    value: [0,0,0],
+    value: [0, 0, 0],
   },
   reducers: {
     updateCircuitGatesSlice: (state, action) => {
-      state.value = action.payload
-
-    }
+      state.value = action.payload;
+    },
   },
-})
+});
 
-export const {updateCircuitGatesSlice} = circuitGatesSlice.actions;
+export const { updateCircuitGatesSlice } = circuitGatesSlice.actions;
 
 export default circuitGatesSlice.reducer;
