@@ -12,6 +12,7 @@ const Container = styled.div`
   grid-template-rows: 100%;
   grid-template-columns: 10% 50% 40%;
   overflow: hidden;
+  color: white;
 `;
 
 const HiddenNotationsWrapper = styled.div`

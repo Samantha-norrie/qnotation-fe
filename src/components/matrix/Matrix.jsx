@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Value } from "../Utils";
+import { useEffect } from "react";
+import { SELECTED, Value } from "../Utils";
 
 const MatrixContainer = styled.div`
     display: flex;
@@ -8,7 +9,6 @@ const MatrixContainer = styled.div`
     justify-content: space-between;
     max-height: 10rem;
     margin: 0.25rem;
-    color: white;
   
   }
     
@@ -21,10 +21,14 @@ const RowContainer = styled.div`
 
 const Matrix = (props) => {
   const { matrix, key, currentIndex} = props;
+  useEffect(() => {
+    console.log("key" + key);
+    console.log("index" + currentIndex);
+  }, []);
 
   return (
     <MatrixContainer
-      className={key === currentIndex ? "selected" : ""}
+      style={key === currentIndex ? SELECTED : null}
     >
       {matrix.map((row) => (
         <RowContainer>

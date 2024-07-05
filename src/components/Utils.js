@@ -51,6 +51,10 @@ export const GATE = "GATE";
 export const MEASUREMENT = "MEASUREMENT";
 export const QUBIT = "QUBIT";
 
+export const SELECTED = {
+  color: "orange"
+};
+
 export const STARTING_CODE =
   "from qiskit import *\n\
 import numpy as np \n\

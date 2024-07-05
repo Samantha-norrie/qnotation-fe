@@ -1,19 +1,20 @@
 import React from "react";
 import Matrix from "./Matrix";
 import StateVector from "./StateVector";
-import { TabContainer, EquationContainer, StateContainer } from "../Utils";
+import { TabContainer, EquationContainer, StateContainer, SELECTED } from "../Utils";
 
 const MatrixContainer = (props) => {
   const { currentIndex, setCurrentIndex, matrixEquation, matrixState } = props;
   const changeIndex = (key) => {
     setCurrentIndex(key);
     console.log("new key " + key);
+    console.log("current index" + currentIndex);
   };
   return (
     <TabContainer>
       <EquationContainer>
         {matrixEquation.map((matrix, key) => (
-          <div onClick={() => changeIndex(key)}>
+          <div style={key === currentIndex? SELECTED: null}onClick={() => changeIndex(key)}>
             <Matrix
               matrix={matrix.content}
               key={key}
