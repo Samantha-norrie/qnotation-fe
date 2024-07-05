@@ -33,11 +33,18 @@ export const EquationContainer = styled.div`
   flex-wrap: wrap;
   grid-column-start: 1;
   grid-column-end: 2;
-  padding: 1rem;
 `;
 
 export const StateContainer = styled.div`
   border-left: solid white;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Value = styled.p`
+  padding: 0;
+  margin: 0.25rem;
+  display: inline;
 `;
 
 export const GATE = "GATE";

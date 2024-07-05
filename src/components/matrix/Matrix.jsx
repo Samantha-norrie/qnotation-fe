@@ -1,31 +1,38 @@
 import React from "react";
 import styled from "styled-components";
+import { Value } from "../Utils";
 
-const Container = styled.div`
+const MatrixContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-height: 10rem;
-    padding-right;
+    margin: 0.25rem;
     color: white;
-    
-    &:hover{
-      border: 2px solid #FFFFFF;
+  
   }
     
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Matrix = (props) => {
   const { matrix, key, currentIndex} = props;
 
   return (
-    <Container
+    <MatrixContainer
       className={key === currentIndex ? "selected" : ""}
     >
       {matrix.map((row) => (
-        <p>{JSON.stringify(row)}</p>
+        <RowContainer>
+          {row.map((value) => (<Value>{value}</Value>))}
+        </RowContainer>
+
       ))}
-    </Container>
+    </MatrixContainer>
   );
 };
 

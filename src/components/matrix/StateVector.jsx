@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Value } from "../Utils";
 
 const Container = styled.div`
     display: flex;
@@ -8,26 +9,17 @@ const Container = styled.div`
     max-height: 10rem;
     padding-right;
     color: white;
-    
-    &:hover{
-      border: 2px solid #FFFFFF;
   }
     
 `;
 
 const StateVector = (props) => {
   const { stateVector } = props;
-  // const changeIndex = () => {
-  //   setCurrentIndex(key);
-  //   console.log("new key "+ key);
-  // }
+
   return (
-    <Container
-    // className={key === currentIndex? "selected": ""}
-    // onClick={() => changeIndex}
-    >
+    <Container>
       {stateVector.map((row) => (
-        <p>{JSON.stringify(row)}</p>
+        <Value>{JSON.stringify(row[0])}</Value>
       ))}
     </Container>
   );
