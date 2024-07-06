@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../App.css";
 import styled from "styled-components";
 import Editor from "@monaco-editor/react";
 import axios from "axios";

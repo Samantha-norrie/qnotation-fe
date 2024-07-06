@@ -1,7 +1,7 @@
 import React from "react";
 import Matrix from "./Matrix";
 import StateVector from "./StateVector";
-import { TabContainer, EquationContainer, StateContainer, SELECTED } from "../Utils";
+import { TabContainer, EquationContainer, StateContainer, SELECTED, ScrollContainer } from "../Utils";
 
 const MatrixContainer = (props) => {
   const { currentIndex, setCurrentIndex, matrixEquation, matrixState } = props;
@@ -12,17 +12,19 @@ const MatrixContainer = (props) => {
   };
   return (
     <TabContainer>
-      <EquationContainer>
-        {matrixEquation.map((matrix, key) => (
-          <div style={key === currentIndex? SELECTED: null}onClick={() => changeIndex(key)}>
-            <Matrix
-              matrix={matrix.content}
-              key={key}
-              currentIndex={currentIndex}
-            />
-          </div>
-        ))}
-      </EquationContainer>
+      <ScrollContainer>
+        <EquationContainer>
+          {matrixEquation.map((matrix, key) => (
+            <div style={key === currentIndex? SELECTED: null} onClick={() => changeIndex(key)}>
+              <Matrix
+                matrix={matrix.content}
+                key={key}
+                currentIndex={currentIndex}
+              />
+            </div>
+          ))}
+        </EquationContainer>
+      </ScrollContainer>
       <StateContainer>
         <StateVector
           stateVector={

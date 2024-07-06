@@ -7,7 +7,6 @@ const MatrixContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-height: 10rem;
     margin: 0.25rem;
   
   }

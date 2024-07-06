@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect } from "react";
-import "../App.css";
 import styled from "styled-components";
 import NotationHeader from "./NotationHeader";
 import CircuitContainer from "./circuit/CircuitContainer";

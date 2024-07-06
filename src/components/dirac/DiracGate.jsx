@@ -7,19 +7,13 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     max-height: 10rem;
-    padding-right;
-    &:hover{
-      border: 2px solid #FFFFFF;
-  }
-    
 `;
 const P = styled.p`
-  color: white;
   display: inline;
 `;
 
 const DiracGate = (props) => {
-  const { content, type, key, currentIndex } = props;
+  const { content, type} = props;
 
   return (
     <Container>

@@ -26,13 +26,18 @@ export const TabContainer = styled.div`
   grid-template-columns: 70% 30%;
   grid-template-rows: 100%;
 `;
+
+export const ScrollContainer = styled.div`
+  height: 200px;
+  overflow-y: auto;
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+`;
 export const EquationContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  max-height: 100%;
   flex-wrap: wrap;
-  grid-column-start: 1;
-  grid-column-end: 2;
 `;
 
 export const StateContainer = styled.div`
@@ -43,7 +48,7 @@ export const StateContainer = styled.div`
 
 export const Value = styled.p`
   padding: 0;
-  margin: 0.25rem;
+  margin: 0.1rem;
   display: inline;
 `;
 
