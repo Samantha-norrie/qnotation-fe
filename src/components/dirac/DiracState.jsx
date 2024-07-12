@@ -7,9 +7,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     max-height: 10rem;
     padding-right;
-    &:hover{
-      border: 2px solid #FFFFFF;
-  }
     
 `;
 const P = styled.p`

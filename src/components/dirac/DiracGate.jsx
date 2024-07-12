@@ -19,15 +19,17 @@ const DiracGate = (props) => {
     <Container>
       {type === QUBIT && (
         <div>
-          {content.map((colInstance) => (
-            <P>{colInstance}</P>
+          {content.map((colInstance, index) => (
+            <P>{colInstance}{index < content.length-1 && <image url="/images/tensor.png"/>}</P>
           ))}
         </div>
       )}
       {type === GATE && (
         <div>
-          {content.map((colInstance) => (
-            <P>{colInstance.gate}</P>
+          {content.map((gateInstance) => (
+            // {!gateInstance.continuation &&
+              <P>{gateInstance.continuation? "":gateInstance.gate}</P>
+            
           ))}
         </div>
       )}
