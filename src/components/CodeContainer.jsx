@@ -3,17 +3,16 @@ import styled from "styled-components";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { Button } from "@mui/material";
+import Alert from '@mui/material/Alert';
 import { STARTING_CODE } from "./Utils";
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 
 const InputContainer = styled.div`
-  background-color: #040d12;
   height: 100vh;
 `;
 
 const ButtonContainer = styled.div`
-    background-color: #ffffff;
     margin: 2rem;
     padding 1rem;
     display: flex;
@@ -30,6 +29,7 @@ const CodeContainer = (props) => {
   } = props;
   const [displayTensorProduct, setDisplayTensorProduct] = useState(false);
   const [code, setCode] = useState(STARTING_CODE);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onCodeChange = (value, event) => {
     console.log("Updated value" + value);
@@ -51,10 +51,14 @@ const CodeContainer = (props) => {
         var data = response.data;
         console.log(data);
         console.log("data!");
-        setCircuitEquation(data.circuit_dirac_gates);
-        setMatrixEquation(data.matrix_gates);
-        setMatrixState(data.matrix_state_vectors);
-        setDiracState(data.dirac_state_vectors);
+        if (data.status !== 200) {
+          setErrorMessage(data.message);
+        } else {
+          setCircuitEquation(data.circuit_dirac_gates);
+          setMatrixEquation(data.matrix_gates);
+          setMatrixState(data.matrix_state_vectors);
+          setDiracState(data.dirac_state_vectors);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -71,6 +75,9 @@ const CodeContainer = (props) => {
         onChange={onCodeChange}
       />
       <ButtonContainer>
+        {errorMessage && 
+          <Alert severity="error">{errorMessage}</Alert>
+}
         <Button
           variant={displayTensorProduct ? "outlined" : "contained"}
           onClick={() => setDisplayTensorProduct(!displayTensorProduct)}
