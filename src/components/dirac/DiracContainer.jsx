@@ -29,6 +29,7 @@ const DiracContainer = (props) => {
         {diracEquation.map((gateDetails, key) => (
           <Container style={key === currentIndex? SELECTED_DIRAC_MATRIX: null} onClick={() => changeIndex(key)}>
             <DiracGate
+              selected = {key === currentIndex}
               content={gateDetails.content}
               type={gateDetails.type}
               continuation={gateDetails.continuation}

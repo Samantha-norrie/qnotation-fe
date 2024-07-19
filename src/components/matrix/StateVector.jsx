@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Value } from "../Utils";
+import { NOT_SELECTED_DIRAC_MATRIX, NOT_SELECTED_DIRAC_MATRIX_IDENTITY, Value } from "../Utils";
 
 const Container = styled.div`
     display: flex;
@@ -19,7 +19,7 @@ const StateVector = (props) => {
   return (
     <Container>
       {stateVector.map((row) => (
-        <Value>{JSON.stringify(row[0])}</Value>
+        <Value style={row[0] !== 0? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}>{JSON.stringify(row[0])}</Value>
       ))}
     </Container>
   );

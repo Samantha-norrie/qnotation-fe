@@ -57,15 +57,36 @@ export const MEASUREMENT = "MEASUREMENT";
 export const QUBIT = "QUBIT";
 
 export const SELECTED_DIRAC_MATRIX = {
-  "color": "orange"
+  "color": "orangeRed"
+};
+
+export const SELECTED_DIRAC_MATRIX_IDENTITY = {
+  "color": "darkOrange"
+};
+
+
+
+export const NOT_SELECTED_DIRAC_MATRIX_IDENTITY = {
+  "color": "grey"
+};
+
+export const NOT_SELECTED_DIRAC_MATRIX = {
+  "color": "white"
 };
 
 export const SELECTED_CIRCUIT = {
-  "backgroundColor": "orange"
+  "backgroundColor": "orangeRed"
+};
+export const SELECTED_CIRCUIT_IDENTITY = {
+  "backgroundColor": "darkOrange"
 };
 
 export const NOT_SELECTED_CIRCUIT = {
   "backgroundColor": "purple"
+};
+
+export const NOT_SELECTED_CIRCUIT_IDENTITY = {
+  "backgroundColor": "midnightBlue"
 };
 
 export const STARTING_CODE =

@@ -17,6 +17,7 @@ const MatrixContainer = (props) => {
           {matrixEquation.map((matrix, key) => (
             <div style={key === currentIndex? SELECTED_DIRAC_MATRIX: null} onClick={() => changeIndex(key)}>
               <Matrix
+                selected = {key === currentIndex}
                 matrix={matrix.content}
                 key={key}
                 currentIndex={currentIndex}

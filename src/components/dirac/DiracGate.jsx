@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { GATE, QUBIT } from "../Utils";
+import { SELECTED_DIRAC_MATRIX, SELECTED_DIRAC_MATRIX_IDENTITY, NOT_SELECTED_DIRAC_MATRIX, NOT_SELECTED_DIRAC_MATRIX_IDENTITY } from "../Utils";
 
 const Container = styled.div`
     display: flex;
@@ -13,7 +14,7 @@ const P = styled.p`
 `;
 
 const DiracGate = (props) => {
-  const { content, type} = props;
+  const { content, type, selected} = props;
 
   return (
     <Container>
@@ -28,7 +29,7 @@ const DiracGate = (props) => {
         <div>
           {content.map((gateInstance) => (
             // {!gateInstance.continuation &&
-              <P>{gateInstance.continuation? "":gateInstance.gate}</P>
+              <P style={selected? gateInstance.gate !== "I"? SELECTED_DIRAC_MATRIX: SELECTED_DIRAC_MATRIX_IDENTITY: gateInstance.gate !== "I"? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}>{gateInstance.continuation? "":gateInstance.gate}</P>
             
           ))}
         </div>
