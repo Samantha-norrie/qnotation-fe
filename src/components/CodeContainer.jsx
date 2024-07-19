@@ -54,6 +54,7 @@ const CodeContainer = (props) => {
         if (data.status !== 200) {
           setErrorMessage(data.message);
         } else {
+          setErrorMessage("");
           setCircuitEquation(data.circuit_dirac_gates);
           setMatrixEquation(data.matrix_gates);
           setMatrixState(data.matrix_state_vectors);
