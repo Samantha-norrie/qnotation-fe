@@ -56,8 +56,16 @@ export const GATE = "GATE";
 export const MEASUREMENT = "MEASUREMENT";
 export const QUBIT = "QUBIT";
 
-export const SELECTED = {
-  color: "orange"
+export const SELECTED_DIRAC_MATRIX = {
+  "color": "orange"
+};
+
+export const SELECTED_CIRCUIT = {
+  "backgroundColor": "orange"
+};
+
+export const NOT_SELECTED_CIRCUIT = {
+  "backgroundColor": "purple"
 };
 
 export const STARTING_CODE =

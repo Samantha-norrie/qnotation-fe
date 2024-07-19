@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
-import { SELECTED, Value } from "../Utils";
+import { SELECTED_DIRAC_MATRIX, Value } from "../Utils";
 
 const MatrixContainer = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ const Matrix = (props) => {
 
   return (
     <MatrixContainer
-      style={key === currentIndex ? SELECTED : null}
+      style={key === currentIndex ? SELECTED_DIRAC_MATRIX : null}
     >
       {matrix.map((row) => (
         <RowContainer>

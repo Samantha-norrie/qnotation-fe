@@ -1,11 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import gateImage from "./single_gate.png";
+import { NOT_SELECTED_CIRCUIT, SELECTED_CIRCUIT } from "../Utils";
 
 const Container = styled.div`
   height: 20px;
   width: 20px;
-  background-image: url(${gateImage});
   color: #ffffff;
   border-radius: 0.25em;
 `;
@@ -15,9 +16,10 @@ const Name = styled.p`
 `;
 
 const Gate = (props) => {
-  const { gate, key, currentIndex } = props;
+  const {gate, selected} = props;
+
   return (
-    <Container className={key === currentIndex ? "selected" : ""}>
+    <Container style={selected? SELECTED_CIRCUIT: NOT_SELECTED_CIRCUIT}>
       <Name>{gate}</Name>
     </Container>
   );

@@ -1,13 +1,12 @@
 import React from "react";
 
 import styled from "styled-components";
+import { SELECTED_CIRCUIT, NOT_SELECTED_CIRCUIT } from "../Utils";
 
 const Container = styled.div`
-  min-height: 20px;
-  max-height: 40px;
-  background-color: #9290c3;
-  color: #1b1a55;
-  border-radius: 1em;
+  height: 20px;
+  width: 20px;
+  border-radius: 0.25em;
 `;
 
 const Value = styled.p`
@@ -15,9 +14,9 @@ const Value = styled.p`
 `;
 
 const Qubit = (props) => {
-  const { qubit, key, currentIndex } = props;
+  const {qubit, selected} = props;
   return (
-    <Container className={key === currentIndex ? "selected" : ""}>
+    <Container style={selected? SELECTED_CIRCUIT: NOT_SELECTED_CIRCUIT}>
       <Value>|{qubit}</Value>
     </Container>
   );

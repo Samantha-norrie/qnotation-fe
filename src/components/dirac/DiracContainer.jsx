@@ -4,7 +4,7 @@ import DiracState from "./DiracState";
 
 import styled from "styled-components";
 import { useEffect } from "react";
-import { SELECTED } from "../Utils";
+import { SELECTED_DIRAC_MATRIX } from "../Utils";
 import { EquationContainer, StateContainer, TabContainer } from "../Utils";
 
 const Container = styled.div`
@@ -27,7 +27,7 @@ const DiracContainer = (props) => {
     <TabContainer>
       <EquationContainer>
         {diracEquation.map((gateDetails, key) => (
-          <Container style={key === currentIndex? SELECTED: null} onClick={() => changeIndex(key)}>
+          <Container style={key === currentIndex? SELECTED_DIRAC_MATRIX: null} onClick={() => changeIndex(key)}>
             <DiracGate
               content={gateDetails.content}
               type={gateDetails.type}

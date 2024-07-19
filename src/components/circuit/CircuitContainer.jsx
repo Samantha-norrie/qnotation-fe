@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Column from "./Column";
+import { NOT_SELECTED_CIRCUIT, SELECTED_CIRCUIT } from "../Utils";
 
 const Container = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ const CircuitContainer = (props) => {
       {circuitDetails.map((columnDetails, key) => (
         <div onClick={() => changeIndex(key)}>
           <Column
+            selected={key === currentIndex ? true: false}
             content={columnDetails.content}
             type={columnDetails.type}
             key={key}
