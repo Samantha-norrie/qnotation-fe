@@ -20,7 +20,9 @@ const style = {
 };
 
 const Container = styled.div`
-  color: #9290c3;
+  color: white;
+  display: flex;
+  align-items: center;
 `;
 
 const NotationHeader = (props) => {
@@ -33,8 +35,8 @@ const NotationHeader = (props) => {
     <Container>
       <p>
         {NOTATION_DETAILS[Number(notation)].title}
-        <InfoSharpIcon onClick={handleOpen}></InfoSharpIcon>
       </p>
+      <InfoSharpIcon onClick={handleOpen}></InfoSharpIcon>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <Typography sx={{ mt: 2 }}>

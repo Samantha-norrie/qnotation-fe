@@ -13,7 +13,6 @@ const InputContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-    margin: 2rem;
     padding 1rem;
     display: flex;
     justify-content: space-around;
@@ -24,10 +23,11 @@ const CodeContainer = (props) => {
   const {
     setCircuitEquation,
     setMatrixEquation,
+    setMatrixTensorProductEquation,
     setMatrixState,
     setDiracState,
+    setDisableDisplayTensorProduct
   } = props;
-  const [displayTensorProduct, setDisplayTensorProduct] = useState(false);
   const [code, setCode] = useState(STARTING_CODE);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -44,7 +44,6 @@ const CodeContainer = (props) => {
         },
         data: {
           qc: code,
-          display_tensor_product: displayTensorProduct,
         },
       })
       .then(function (response) {
@@ -57,6 +56,11 @@ const CodeContainer = (props) => {
           setErrorMessage("");
           setCircuitEquation(data.circuit_dirac_gates);
           setMatrixEquation(data.matrix_gates);
+          if (data.num_qubits <= 3) {
+            console.log("in qubit IF" + data.matrix_gates_tensor_products[0]);
+            setMatrixTensorProductEquation(data.matrix_gates_tensor_products);
+            setDisableDisplayTensorProduct(false);
+          }
           setMatrixState(data.matrix_state_vectors);
           setDiracState(data.dirac_state_vectors);
         }
@@ -69,7 +73,7 @@ const CodeContainer = (props) => {
   return (
     <InputContainer>
       <Editor
-        height="80vh"
+        height="95vh"
         language="python"
         theme="vs-dark"
         defaultValue={STARTING_CODE}
@@ -79,12 +83,6 @@ const CodeContainer = (props) => {
         {errorMessage && 
           <Alert severity="error">{errorMessage}</Alert>
 }
-        <Button
-          variant={displayTensorProduct ? "outlined" : "contained"}
-          onClick={() => setDisplayTensorProduct(!displayTensorProduct)}
-        >
-          Tensor
-        </Button>
         <Button variant="contained" onClick={getNotationResults}>
           run
         </Button>

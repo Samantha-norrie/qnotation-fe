@@ -5,7 +5,7 @@ import styled from "styled-components";
 import NotationBlock from "./NotationBlock";
 
 const Notation = styled.li`
-  background-color: #040d12;
+  background-color: #070f2b;
   max-height: 100%;
   height: 33%;
   min-height: 33%;
@@ -13,6 +13,9 @@ const Notation = styled.li`
 
 const BlockContainer = styled.ul`
   height: 100vh;
+  list-style-type: none;
+}
+
 `;
 const NotationsContainer = (props) => {
   const [box, setBox] = useState([

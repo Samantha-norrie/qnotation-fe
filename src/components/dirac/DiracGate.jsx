@@ -20,16 +20,23 @@ const DiracGate = (props) => {
     <Container>
       {type === QUBIT && (
         <div>
-          {content.map((colInstance, index) => (
-            <P>{colInstance}{index < content.length-1 && <image url="/images/tensor.png"/>}</P>
+          <p>
+            |{content.map((colInstance) => (
+            <P>{colInstance}</P>
           ))}
+          〉</p>
         </div>
       )}
       {type === GATE && (
         <div>
-          {content.map((gateInstance) => (
-            // {!gateInstance.continuation &&
-              <P style={selected? gateInstance.gate !== "I"? SELECTED_DIRAC_MATRIX: SELECTED_DIRAC_MATRIX_IDENTITY: gateInstance.gate !== "I"? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}>{gateInstance.continuation? "":gateInstance.gate}</P>
+          {content.map((gateInstance, index) => (
+              <P style={selected? gateInstance.gate !== "I"? 
+                SELECTED_DIRAC_MATRIX: SELECTED_DIRAC_MATRIX_IDENTITY: 
+                  gateInstance.gate !== "I"? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}
+              >
+                {gateInstance.continuation? "":gateInstance.gate}
+                {index < content.length-1 && !gateInstance.continuation && " X "}
+              </P>
             
           ))}
         </div>

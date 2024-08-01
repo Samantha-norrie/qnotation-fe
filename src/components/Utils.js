@@ -41,7 +41,6 @@ export const EquationContainer = styled.div`
 `;
 
 export const StateContainer = styled.div`
-  border-left: solid white;
   display: flex;
   justify-content: center;
 `;
@@ -50,6 +49,7 @@ export const Value = styled.p`
   padding: 0;
   margin: 0.1rem;
   display: inline;
+  text-align:center;
 `;
 
 export const GATE = "GATE";
@@ -82,11 +82,12 @@ export const SELECTED_CIRCUIT_IDENTITY = {
 };
 
 export const NOT_SELECTED_CIRCUIT = {
-  "backgroundColor": "purple"
+  "color": "black",
+  "backgroundColor": "white"
 };
 
 export const NOT_SELECTED_CIRCUIT_IDENTITY = {
-  "backgroundColor": "midnightBlue"
+  "backgroundColor": "grey"
 };
 
 export const STARTING_CODE =

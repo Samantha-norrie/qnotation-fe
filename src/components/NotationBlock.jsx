@@ -7,7 +7,7 @@ import MatrixContainer from "./matrix/MatrixContainer";
 import DiracContainer from "./dirac/DiracContainer";
 
 const Container = styled.div`
-  background-color: #040d12;
+  background-color: #070f2b;
   max-height: 100%;
   min-height: 33%;
 `;
@@ -17,16 +17,20 @@ const NotationBlock = (props) => {
     notationNumber,
     circuitEquation,
     matrixEquation,
+    matrixTensorProductEquation,
     matrixState,
     diracState,
     currentIndex,
     setCurrentIndex,
+    displayTensorProduct,
+    setDisableDisplayTensorProduct
   } = props;
 
   useEffect(() => {
     console.log("in block");
     console.log("matrix in block" + diracState.length);
-  }, []);
+    console.log("TENSOR" + matrixTensorProductEquation);
+  }, [matrixTensorProductEquation]);
 
   return (
     <Container>
@@ -53,9 +57,12 @@ const NotationBlock = (props) => {
         <div>
           <MatrixContainer
             matrixEquation={matrixEquation}
+            matrixTensorProductEquation={matrixTensorProductEquation}
             matrixState={matrixState}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
+            displayTensorProduct={displayTensorProduct}
+            setDisableDisplayTensorProduct={setDisableDisplayTensorProduct}
           />
         </div>
       )}

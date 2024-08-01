@@ -21,7 +21,7 @@ const DiracState = (props) => {
     <Container>
       {stateDetails.map((stateContent, index) => (
         <P>
-          {stateContent.scalar}|{stateContent.bin}
+          {stateContent.scalar}|{stateContent.bin}〉
           {index < stateDetails.length - 1 ? "+" : ""}
         </P>
       ))}

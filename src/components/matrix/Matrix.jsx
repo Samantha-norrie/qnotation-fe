@@ -20,6 +20,9 @@ const RowContainer = styled.div`
 
 const Matrix = (props) => {
   const { matrix, selected} = props;
+  useEffect(() => {
+    console.log("matrix" + matrix);
+  }, [matrix]);
 
 
   return (
