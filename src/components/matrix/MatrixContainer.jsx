@@ -3,6 +3,7 @@ import Matrix from "./Matrix";
 import StateVector from "./StateVector";
 import { useEffect } from "react";
 import { TabContainer, EquationContainer, StateContainer, SELECTED_DIRAC_MATRIX, ScrollContainer } from "../Utils";
+import TensorProduct from "./TensorProduct";
 
 const MatrixContainer = (props) => {
   const { currentIndex, setCurrentIndex, matrixEquation, matrixTensorProductEquation, displayTensorProduct, matrixState } = props;
@@ -18,32 +19,20 @@ const MatrixContainer = (props) => {
   return (
     <TabContainer>
       <ScrollContainer>
-        {/* <EquationContainer> */}
           {displayTensorProduct?
             <EquationContainer>
-            {matrixTensorProductEquation.map((matrices, key) => (
+            {matrixTensorProductEquation.map((matrixSection, key) => (
               <div>
-                {/* {key === 0 && 
-                  <StateVector
-                    stateVector={matrices}
-                  />
-                  // <Matrix
-                  //   selected = {key === currentIndex}
-                  //   matrix={matrices}
-                  //   key={key}
-                  //   currentIndex={currentIndex}
-                  // />
-                } */}
-                {key > 0 && (matrices.content).map((matrix) =>(
-                <EquationContainer style={key === currentIndex? SELECTED_DIRAC_MATRIX: null} onClick={() => changeIndex(key)}>
+                {key === 0 && 
                   <Matrix
+                    onClick={() => changeIndex(key)}
+                    matrix={matrixSection.content}
                     selected = {key === currentIndex}
-                    matrix={matrix}
-                    key={key}
-                    currentIndex={currentIndex}
                   />
-                </EquationContainer>
-                ))}
+                }
+                {key > 0 && 
+                  <TensorProduct onClick={() => changeIndex(key)} matrices={matrixSection.content} selected={key === currentIndex}/>
+                }
               </div>
             ))}
             </EquationContainer> 
@@ -60,7 +49,6 @@ const MatrixContainer = (props) => {
             ))}
             </EquationContainer>
         }
-        {/* </EquationContainer> */}
       </ScrollContainer>
       <StateContainer>
         <StateVector
