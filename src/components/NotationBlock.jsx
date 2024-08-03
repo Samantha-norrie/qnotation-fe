@@ -7,7 +7,7 @@ import MatrixContainer from "./matrix/MatrixContainer";
 import DiracContainer from "./dirac/DiracContainer";
 
 const Container = styled.div`
-  background-color: #070f2b;
+  background-color: #040d12;
   max-height: 100%;
   min-height: 33%;
 `;

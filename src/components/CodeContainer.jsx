@@ -5,6 +5,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import Alert from '@mui/material/Alert';
 import { STARTING_CODE } from "./Utils";
+import AlgorithmSelect from "../AlgorithmSelect";
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 
@@ -33,6 +34,7 @@ const CodeContainer = (props) => {
 
   const onCodeChange = (value, event) => {
     console.log("Updated value" + value);
+    console.log(event);
     setCode(value);
   };
 
@@ -73,19 +75,20 @@ const CodeContainer = (props) => {
   return (
     <InputContainer>
       <Editor
-        height="95vh"
+        height="80vh"
         language="python"
         theme="vs-dark"
-        defaultValue={STARTING_CODE}
+        value={code}
         onChange={onCodeChange}
       />
       <ButtonContainer>
         {errorMessage && 
           <Alert severity="error">{errorMessage}</Alert>
-}
+        }
         <Button variant="contained" onClick={getNotationResults}>
           run
         </Button>
+        <AlgorithmSelect onCodeChange={onCodeChange}/>
       </ButtonContainer>
     </InputContainer>
   );

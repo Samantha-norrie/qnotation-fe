@@ -1,10 +1,16 @@
 import React from "react";
 import Matrix from "./Matrix";
 import StateVector from "./StateVector";
+import styled from "styled-components";
 import { useEffect } from "react";
 import { TabContainer, EquationContainer, StateContainer, SELECTED_DIRAC_MATRIX, ScrollContainer } from "../Utils";
 import TensorProduct from "./TensorProduct";
 
+const TensorProductContainer = styled.div`
+    display: flex;
+    align-items: center;
+
+`;
 const MatrixContainer = (props) => {
   const { currentIndex, setCurrentIndex, matrixEquation, matrixTensorProductEquation, displayTensorProduct, matrixState } = props;
   const changeIndex = (key) => {
@@ -22,7 +28,7 @@ const MatrixContainer = (props) => {
           {displayTensorProduct?
             <EquationContainer>
             {matrixTensorProductEquation.map((matrixSection, key) => (
-              <div>
+              <TensorProductContainer>
                 {key === 0 && 
                   <Matrix
                     onClick={() => changeIndex(key)}
@@ -33,7 +39,7 @@ const MatrixContainer = (props) => {
                 {key > 0 && 
                   <TensorProduct onClick={() => changeIndex(key)} matrices={matrixSection.content} selected={key === currentIndex}/>
                 }
-              </div>
+              </TensorProductContainer>
             ))}
             </EquationContainer> 
             :<EquationContainer>

@@ -6,6 +6,7 @@ import InfoSharpIcon from "@mui/icons-material/InfoSharp";
 import { NOTATION_DETAILS } from "./Utils";
 
 import styled from "styled-components";
+import NotationModal from "./NotationModal";
 
 const style = {
   position: "absolute",
@@ -38,11 +39,12 @@ const NotationHeader = (props) => {
       </p>
       <InfoSharpIcon onClick={handleOpen}></InfoSharpIcon>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
+        <NotationModal notation={Number(notation)}/>
+        {/* <Box sx={style}>
           <Typography sx={{ mt: 2 }}>
             {NOTATION_DETAILS[Number(notation)].info}
           </Typography>
-        </Box>
+        </Box> */}
       </Modal>
     </Container>
   );

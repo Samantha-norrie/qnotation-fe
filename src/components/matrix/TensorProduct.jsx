@@ -7,6 +7,7 @@ import { TabContainer, EquationContainer, StateContainer, SELECTED_DIRAC_MATRIX,
 
 const TensorProductContainer = styled.div`
     display: flex;
+    align-items: center;
 
 `;
 

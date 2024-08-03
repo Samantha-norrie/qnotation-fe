@@ -1,7 +1,7 @@
 import styled from "styled-components";
-export const MATRIX_TITLE = "Matrix";
-export const DIRAC_TITLE = "Dirac";
-export const CIRCUIT_TITLE = "Circuit";
+export const MATRIX_TITLE = "Matrix Notation";
+export const DIRAC_TITLE = "Dirac Notation";
+export const CIRCUIT_TITLE = "Circuit Notation";
 
 const MATRIX_INFO = "Matrix notation... ";
 const DIRAC_INFO = "Dirac notation... ";
@@ -20,6 +20,42 @@ export const NOTATION_DETAILS = [
     title: MATRIX_TITLE,
     info: MATRIX_INFO,
   },
+];
+const ALGORITHM_GROVER_TITLE = "GROVER'S ALGORITHM";
+const ALGORITHM_GROVER_INFO = "info";
+const ALGORITHM_GROVER_CODE = "";
+
+const ALGORITHM_TELEPORTATION_TITLE = "QUANTUM TELEPORTATION";
+const ALGORITHM_TELEPORTATION_INFO = "info";
+const ALGORITHM_TELEPORTATION_CODE =
+"from qiskit import *\n\
+import numpy as np \n\
+qc = QuantumCircuit(3)\
+\n\n\
+# Insert code below \n\
+\n\
+# Create state to teleport\n\
+qc.x(0)\n\
+# Start algorithm\n\
+qc.h(1)\n\
+qc.cx(1,2)\n\
+qc.cx(0,1)\n\
+qc.h(0)\n\
+qc.cx(0,1)\n\
+qc.cz(0,2)\n\
+";
+
+export const ALGORITHMS = [
+  {
+    title: ALGORITHM_GROVER_TITLE,
+    info: ALGORITHM_GROVER_INFO,
+    code: ALGORITHM_GROVER_CODE
+  },
+  {
+    title: ALGORITHM_TELEPORTATION_TITLE,
+    info: ALGORITHM_TELEPORTATION_INFO,
+    code: ALGORITHM_TELEPORTATION_CODE
+  }
 ];
 export const TabContainer = styled.div`
   display: grid;
