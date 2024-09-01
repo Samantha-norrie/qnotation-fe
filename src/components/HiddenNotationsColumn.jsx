@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const HiddenNotationsColumn = (props) => {
-  const {displayTensorProduct, setDisplayTensorProduct, disableDisplayTensorProduct} = props;
+  const {displayTensorProduct, setDisplayTensorProduct, displayLittleEndian, setDisplayLittleEndian, disableDisplayTensorProduct} = props;
   return (
     <Container>
         <Button
@@ -19,7 +19,14 @@ const HiddenNotationsColumn = (props) => {
           variant={displayTensorProduct ? "outlined" : "contained"}
           onClick={() => setDisplayTensorProduct(!displayTensorProduct)}
         >
-          Tensor
+          ⊗
+        </Button>
+        <Button
+          disabled={disableDisplayTensorProduct}
+          variant={!displayLittleEndian ? "outlined" : "contained"}
+          onClick={() => setDisplayLittleEndian(!displayLittleEndian)}
+        >
+          LE
         </Button>
         <Button>?</Button>
     </Container>

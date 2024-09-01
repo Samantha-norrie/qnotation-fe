@@ -12,13 +12,14 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    cursor: pointer;
 `;
 
 const DiracContainer = (props) => {
   const { diracEquation, diracState, currentIndex, setCurrentIndex } = props;
-  useEffect(() => {
-    console.log("dirac state in DiracContainer" + diracState.length);
-  }, []);
+  // useEffect(() => {
+  //   console.log("dirac state in DiracContainer" + diracState.length);
+  // }, []);
   const changeIndex = (key) => {
     setCurrentIndex(key);
     console.log("new key " + key);
@@ -42,7 +43,7 @@ const DiracContainer = (props) => {
       <StateContainer>
         <DiracState
           stateDetails={
-            diracState.length === 0 ? [] : diracState[currentIndex].content
+            diracState === null || diracState.length === 0 ? [] : diracState[currentIndex].content
           }
         />
       </StateContainer>

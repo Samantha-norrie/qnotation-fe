@@ -8,9 +8,14 @@ const MatrixContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     margin: 0.25rem;
-  
+   cursor: pointer;
   }
     
+`;
+// TODO name
+const MatrixTensorContainer = styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 const RowContainer = styled.div`
@@ -19,21 +24,26 @@ const RowContainer = styled.div`
 `;
 
 const Matrix = (props) => {
-  const { matrix, selected} = props;
+  const { matrix, addTensor, selected} = props;
   useEffect(() => {
     console.log("matrix" + matrix);
   }, [matrix]);
 
 
   return (
-    <MatrixContainer>
-      {matrix.map((row) => (
-        <RowContainer>
-          {row.map((value) => (<Value style={selected? value !== 0? SELECTED_DIRAC_MATRIX: SELECTED_DIRAC_MATRIX_IDENTITY: value !== 0? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}>{value}</Value>))}
-        </RowContainer>
+    <MatrixTensorContainer>
+      <MatrixContainer>
+        {matrix.map((row) => (
+          <RowContainer>
+            {row.map((value) => (<Value style={selected? value !== 0? SELECTED_DIRAC_MATRIX: SELECTED_DIRAC_MATRIX_IDENTITY: value !== 0? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}>{value}</Value>))}
+          </RowContainer>
 
-      ))}
-    </MatrixContainer>
+        ))}
+      </MatrixContainer>
+      {
+        addTensor && <p>⊗</p>
+    }
+    </MatrixTensorContainer>
   );
 };
 

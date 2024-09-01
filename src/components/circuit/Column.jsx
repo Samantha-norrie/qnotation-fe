@@ -8,8 +8,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-height: 10rem;
-    margin: .25rem; 
+    align-items: center;
+    height: 100%;
+    margin: 0rem .25rem;
+    cursor: pointer; 
 `;
 
 const Column = (props) => {
@@ -19,16 +21,17 @@ const Column = (props) => {
     <Container>
       {type === QUBIT && (
         <div>
-          {content.map((colInstance) => (
-            <Qubit qubit={colInstance} selected={selected}/>
+          {content.map((gateDetails, index) => (
+            <Qubit qubit_value={gateDetails} index={index} selected={selected}/>
           ))}
         </div>
       )}
       {type === GATE && (
         <div>
-          {content.map((colInstance) => (
+          {content.map((gateDetails) => (
             <Gate
-              gate={colInstance.gate}
+              gate={gateDetails.gate}
+              gateType={gateDetails.gate_type}
               selected={selected}
             />
           ))}

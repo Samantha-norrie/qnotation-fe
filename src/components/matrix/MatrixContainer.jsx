@@ -20,7 +20,7 @@ const MatrixContainer = (props) => {
   };
   useEffect(() => {
     console.log("in block");
-    console.log("MATIX CONTAINER TENSOR" + matrixTensorProductEquation.length > 0? matrixTensorProductEquation[0]: "NONE");
+    console.log("MATIX CONTAINER TENSOR" + matrixTensorProductEquation != null && matrixTensorProductEquation.length > 0? matrixTensorProductEquation[0]: "NONE");
   }, [matrixTensorProductEquation]);
   return (
     <TabContainer>
@@ -59,7 +59,7 @@ const MatrixContainer = (props) => {
       <StateContainer>
         <StateVector
           stateVector={
-            matrixState.length === 0 ? [] : matrixState[currentIndex].content
+            matrixState === null || matrixState.length === 0 ? [] : matrixState[currentIndex].content
           }
         />
       </StateContainer>

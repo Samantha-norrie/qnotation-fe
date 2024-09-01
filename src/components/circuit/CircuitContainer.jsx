@@ -24,7 +24,6 @@ const CircuitContainer = (props) => {
             selected={key === currentIndex ? true: false}
             content={columnDetails.content}
             type={columnDetails.type}
-            key={key}
             currentIndex={currentIndex}
           />
         </div>

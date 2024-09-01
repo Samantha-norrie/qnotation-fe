@@ -15,22 +15,28 @@ const Container = styled.div`
 const NotationBlock = (props) => {
   const {
     notationNumber,
-    circuitEquation,
-    matrixEquation,
-    matrixTensorProductEquation,
-    matrixState,
-    diracState,
+    circuitEquationLE,
+    matrixEquationLE,
+    matrixTensorProductEquationLE,
+    matrixStateLE,
+    diracStateLE,
+    circuitEquationBE,
+    matrixEquationBE,
+    matrixTensorProductEquationBE,
+    matrixStateBE,
+    diracStateBE,
     currentIndex,
     setCurrentIndex,
     displayTensorProduct,
-    setDisableDisplayTensorProduct
+    displayLittleEndian
+    // setDisableDisplayTensorProduct
   } = props;
 
-  useEffect(() => {
-    console.log("in block");
-    console.log("matrix in block" + diracState.length);
-    console.log("TENSOR" + matrixTensorProductEquation);
-  }, [matrixTensorProductEquation]);
+  // useEffect(() => {
+  //   console.log("in block");
+  //   console.log("matrix in block" + diracState.length);
+  //   console.log("TENSOR" + matrixTensorProductEquation);
+  // }, [matrixTensorProductEquation]);
 
   return (
     <Container>
@@ -39,7 +45,7 @@ const NotationBlock = (props) => {
       {notationNumber === 0 && (
         <div>
           <CircuitContainer
-            circuitDetails={circuitEquation}
+            circuitDetails={displayLittleEndian? circuitEquationLE: circuitEquationBE}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
           />
@@ -47,8 +53,8 @@ const NotationBlock = (props) => {
       )}
       {notationNumber === 1 && (
         <DiracContainer
-          diracEquation={circuitEquation}
-          diracState={diracState}
+          diracEquation={displayLittleEndian? circuitEquationLE: circuitEquationBE}
+          diracState={displayLittleEndian? diracStateLE: diracStateBE}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
         />
@@ -56,13 +62,13 @@ const NotationBlock = (props) => {
       {notationNumber === 2 && (
         <div>
           <MatrixContainer
-            matrixEquation={matrixEquation}
-            matrixTensorProductEquation={matrixTensorProductEquation}
-            matrixState={matrixState}
+            matrixEquation={displayLittleEndian? matrixEquationLE: matrixEquationBE}
+            matrixTensorProductEquation={displayLittleEndian? matrixTensorProductEquationLE: matrixTensorProductEquationBE}
+            matrixState={displayLittleEndian? matrixStateLE: matrixStateBE}
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
             displayTensorProduct={displayTensorProduct}
-            setDisableDisplayTensorProduct={setDisableDisplayTensorProduct}
+            // setDisableDisplayTensorProduct={setDisableDisplayTensorProduct}
           />
         </div>
       )}

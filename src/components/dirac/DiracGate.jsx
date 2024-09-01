@@ -9,6 +9,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     max-height: 10rem;
+    padding: 0.25rem;
 `;
 const P = styled.p`
   display: inline;
@@ -36,7 +37,7 @@ const DiracGate = (props) => {
                   gateInstance.gate !== "I"? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}
               >
                 {gateInstance.continuation? "":gateInstance.gate}
-                {index < content.length-1 && !gateInstance.continuation && <img src="../../1619_tensor-product.png"/>}
+                {content !== null && index < content.length-1 && !gateInstance.continuation && " ⊗ "}
               </P>
             
           ))}

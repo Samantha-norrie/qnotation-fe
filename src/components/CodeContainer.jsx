@@ -22,11 +22,16 @@ const ButtonContainer = styled.div`
 
 const CodeContainer = (props) => {
   const {
-    setCircuitEquation,
-    setMatrixEquation,
-    setMatrixTensorProductEquation,
-    setMatrixState,
-    setDiracState,
+    setCircuitEquationLE,
+    setMatrixEquationLE,
+    setMatrixTensorProductEquationLE,
+    setMatrixStateLE,
+    setDiracStateLE,
+    setCircuitEquationBE,
+    setMatrixEquationBE,
+    setMatrixTensorProductEquationBE,
+    setMatrixStateBE,
+    setDiracStateBE,
     setDisableDisplayTensorProduct
   } = props;
   const [code, setCode] = useState(STARTING_CODE);
@@ -39,37 +44,39 @@ const CodeContainer = (props) => {
   };
 
   const getNotationResults = async () => {
-    axios
-      .post("http://127.0.0.1:5000/get_notation_data", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          qc: code,
-        },
-      })
-      .then(function (response) {
-        var data = response.data;
-        console.log(data);
-        console.log("data!");
-        if (data.status !== 200) {
-          setErrorMessage(data.message);
-        } else {
-          setErrorMessage("");
-          setCircuitEquation(data.circuit_dirac_gates);
-          setMatrixEquation(data.matrix_gates);
-          if (data.num_qubits <= 3) {
-            console.log("in qubit IF" + data.matrix_gates_tensor_products[0]);
-            setMatrixTensorProductEquation(data.matrix_gates_tensor_products);
-            setDisableDisplayTensorProduct(false);
-          }
-          setMatrixState(data.matrix_state_vectors);
-          setDiracState(data.dirac_state_vectors);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+    const response = await axios
+    .post("http://127.0.0.1:5000/get_notation_data", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        qc: code,
+      },
+    });
+
+    const data = response.data;
+    console.log(data);
+    console.log("data!");
+    if (data.status !== 200) {
+      setErrorMessage(data.message);
+    } else {
+      setErrorMessage("");
+      setCircuitEquationLE(data.circuit_dirac_gate_le);
+      setCircuitEquationBE(data.circuit_dirac_gate_be);
+      setMatrixEquationLE(data.matrix_gates_le);
+      setMatrixEquationBE(data.matrix_gates_be);
+      if (data.num_qubits <= 3) {
+        setMatrixTensorProductEquationLE(data.matrix_gates_tensor_product_le);
+        setMatrixTensorProductEquationBE(data.matrix_gates_tensor_product_be);
+        setDisableDisplayTensorProduct(false);
+      }
+      setMatrixStateLE(data.matrix_state_vector_le);
+      setMatrixStateBE(data.matrix_state_vector_be);
+      setDiracStateLE(data.dirac_state_vector_le);
+      setDiracStateBE(data.dirac_state_vector_be);
+    }
+    
   };
 
   return (

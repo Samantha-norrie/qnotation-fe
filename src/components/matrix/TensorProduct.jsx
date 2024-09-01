@@ -8,6 +8,7 @@ import { TabContainer, EquationContainer, StateContainer, SELECTED_DIRAC_MATRIX,
 const TensorProductContainer = styled.div`
     display: flex;
     align-items: center;
+    padding: 0.5rem;
 
 `;
 
@@ -16,10 +17,11 @@ const TensorProduct = (props) => {
     return (
         <TensorProductContainer>
             {
-                matrices.map((matrix) => (
+                matrices.map((matrix, index) => (
                     <Matrix
                         matrix={matrix}
                         selected={selected}
+                        addTensor={index < matrices.length-1? true: false}
                     />
                 ))
             }

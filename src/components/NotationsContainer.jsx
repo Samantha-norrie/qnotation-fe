@@ -4,16 +4,14 @@ import { NOTATION_DETAILS } from "./Utils";
 import styled from "styled-components";
 import NotationBlock from "./NotationBlock";
 
-const Notation = styled.li`
+const Notation = styled.div`
   background-color: #040d12;
   max-height: 100%;
-  height: 33%;
-  min-height: 33%;
+  height: 100%;
 `;
 
-const BlockContainer = styled.ul`
-  height: 100vh;
-  list-style-type: none;
+const BlockContainer = styled.div`
+  height: 33%;
 }
 
 `;

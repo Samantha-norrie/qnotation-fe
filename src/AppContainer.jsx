@@ -33,22 +33,30 @@ const CodeContainerWrapper = styled.div`
 
 const AppContainer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [circuitEquation, setCircuitEquation] = useState([]);
-  const [matrixEquation, setMatrixEquation] = useState([]);
-  const [matrixTensorProductEquation, setMatrixTensorProductEquation] = useState([]);
-  const [matrixState, setMatrixState] = useState([]);
-  const [diracState, setDiracState] = useState([]);
+  const [circuitEquationLE, setCircuitEquationLE] = useState([]);
+  const [circuitEquationBE, setCircuitEquationBE] = useState([]);
+  const [matrixEquationLE, setMatrixEquationLE] = useState([]);
+  const [matrixEquationBE, setMatrixEquationBE] = useState([]);
+  const [matrixTensorProductEquationLE, setMatrixTensorProductEquationLE] = useState([]);
+  const [matrixTensorProductEquationBE, setMatrixTensorProductEquationBE] = useState([]);
+  const [matrixStateLE, setMatrixStateLE] = useState([]);
+  const [matrixStateBE, setMatrixStateBE] = useState([]);
+  const [diracStateLE, setDiracStateLE] = useState([]);
+  const [diracStateBE, setDiracStateBE] = useState([]);
   const [displayTensorProduct, setDisplayTensorProduct] = useState(false);
+  const [displayLittleEndian, setDisplayLittleEndian] = useState(true);
   const [disableDisplayTensorProduct, setDisableDisplayTensorProduct] = useState(true);
   useEffect(() => {
-    console.log("APP CONTAINER TENSOR" + matrixTensorProductEquation);
-  }, [matrixTensorProductEquation]);
+    console.log("APP CONTAINER TENSOR" + matrixTensorProductEquationLE);
+  }, [matrixTensorProductEquationLE]);
   return (
     <Container>
       <HiddenNotationsWrapper>
         <HiddenNotationsColumn
           displayTensorProduct={displayTensorProduct}
           setDisplayTensorProduct={setDisplayTensorProduct}
+          displayLittleEndian={displayLittleEndian}
+          setDisplayLittleEndian={setDisplayLittleEndian}
           disableDisplayTensorProduct={disableDisplayTensorProduct}
         />
       </HiddenNotationsWrapper>
@@ -56,22 +64,34 @@ const AppContainer = () => {
         <NotationsContainer
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
-          circuitEquation={circuitEquation}
-          matrixEquation={matrixEquation}
-          matrixTensorProductEquation={matrixTensorProductEquation}
-          matrixState={matrixState}
-          diracState={diracState}
+          circuitEquationLE={circuitEquationLE}
+          matrixEquationLE={matrixEquationLE}
+          matrixTensorProductEquationLE={matrixTensorProductEquationLE}
+          matrixStateLE={matrixStateLE}
+          diracStateLE={diracStateLE}
+          circuitEquationBE={circuitEquationBE}
+          matrixEquationBE={matrixEquationBE}
+          matrixTensorProductEquationBE={matrixTensorProductEquationBE}
+          matrixStateBE={matrixStateBE}
+          diracStateBE={diracStateBE}
           displayTensorProduct={displayTensorProduct}
+          displayLittleEndian={displayLittleEndian}
         />
       </NotationsContainerWrapper>
       <CodeContainerWrapper>
         <CodeContainer
-          setCircuitEquation={setCircuitEquation}
-          setMatrixEquation={setMatrixEquation}
-          setMatrixTensorProductEquation={setMatrixTensorProductEquation}
-          setMatrixState={setMatrixState}
-          setDiracState={setDiracState}
+          setCircuitEquationLE={setCircuitEquationLE}
+          setMatrixEquationLE={setMatrixEquationLE}
+          setMatrixTensorProductEquationLE={setMatrixTensorProductEquationLE}
+          setMatrixStateLE={setMatrixStateLE}
+          setDiracStateLE={setDiracStateLE}
+          setCircuitEquationBE={setCircuitEquationBE}
+          setMatrixEquationBE={setMatrixEquationBE}
+          setMatrixTensorProductEquationBE={setMatrixTensorProductEquationBE}
+          setMatrixStateBE={setMatrixStateBE}
+          setDiracStateBE={setDiracStateBE}
           setDisableDisplayTensorProduct={setDisableDisplayTensorProduct}
+          // setDisplayLittleEndian={setDisplayLittleEndian}
         />
       </CodeContainerWrapper>
     </Container>

@@ -39,12 +39,13 @@ const NotationHeader = (props) => {
       </p>
       <InfoSharpIcon onClick={handleOpen}></InfoSharpIcon>
       <Modal open={open} onClose={handleClose}>
-        <NotationModal notation={Number(notation)}/>
-        {/* <Box sx={style}>
+        {/* <NotationModal notation={Number(notation)}/> */}
+        <Box sx={style}>
           <Typography sx={{ mt: 2 }}>
-            {NOTATION_DETAILS[Number(notation)].info}
+            {/* {NOTATION_DETAILS[Number(notation)].info} */}
+            <NotationModal notation={Number(notation)}/>
           </Typography>
-        </Box> */}
+        </Box>
       </Modal>
     </Container>
   );
