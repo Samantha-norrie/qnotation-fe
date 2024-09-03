@@ -33,7 +33,6 @@ const DiracContainer = (props) => {
               selected = {key === currentIndex}
               content={gateDetails.content}
               type={gateDetails.type}
-              continuation={gateDetails.continuation}
               key={key}
               currentIndex={currentIndex}
             />

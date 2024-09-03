@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { GATE, QUBIT } from "../Utils";
+import { GATE, QUBIT, TENSOR } from "../Utils";
 import { SELECTED_DIRAC_MATRIX, SELECTED_DIRAC_MATRIX_IDENTITY, NOT_SELECTED_DIRAC_MATRIX, NOT_SELECTED_DIRAC_MATRIX_IDENTITY } from "../Utils";
 import "../../1619_tensor-product.png";
 
@@ -37,7 +37,7 @@ const DiracGate = (props) => {
                   gateInstance.gate !== "I"? NOT_SELECTED_DIRAC_MATRIX: NOT_SELECTED_DIRAC_MATRIX_IDENTITY}
               >
                 {gateInstance.continuation? "":gateInstance.gate}
-                {content !== null && index < content.length-1 && !gateInstance.continuation && " ⊗ "}
+                {content !== null && index < content.length-1 && !gateInstance.continuation && TENSOR}
               </P>
             
           ))}

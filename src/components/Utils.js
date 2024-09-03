@@ -95,6 +95,7 @@ export const ScrollContainer = styled.div`
 export const EquationContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
   flex-wrap: wrap;
 `;
 
@@ -104,11 +105,17 @@ export const StateContainer = styled.div`
 `;
 
 export const Value = styled.p`
-  padding: 0;
-  margin: 0.1rem;
+  // padding: 0;
+  // margin: 0.1rem;
   display: inline;
   text-align:center;
 `;
+
+const Tensor = styled.p`
+  color: white;
+  display: inline;
+`;
+export const TENSOR = <Tensor>⊗</Tensor>
 
 export const GATE = "GATE";
 export const MEASUREMENT = "MEASUREMENT";
@@ -143,9 +150,7 @@ export const SELECTED_CIRCUIT_TARGET = {
   "borderRadius": "5em"
 };
 export const SELECTED_CIRCUIT_BETWEEN = {
-  "backgroundColor": "orangeRed",
-  "width": "10px",
-  "height": "10px",
+  "backgroundColor": "black",
   "borderRadius": "0.25em"
 };
 export const SELECTED_CIRCUIT_IDENTITY = {
@@ -173,7 +178,7 @@ export const NOT_SELECTED_CIRCUIT_TARGET = {
 
 export const NOT_SELECTED_CIRCUIT_BETWEEN = {
   "color": "black",
-  "backgroundColor": "white",
+  "backgroundColor": "black",
   "borderRadius": "0.25em"
 };
 

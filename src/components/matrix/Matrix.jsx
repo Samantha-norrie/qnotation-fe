@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
-import { NOT_SELECTED_DIRAC_MATRIX, NOT_SELECTED_DIRAC_MATRIX_IDENTITY, SELECTED_DIRAC_MATRIX, SELECTED_DIRAC_MATRIX_IDENTITY, Value } from "../Utils";
+import { NOT_SELECTED_DIRAC_MATRIX, NOT_SELECTED_DIRAC_MATRIX_IDENTITY, SELECTED_DIRAC_MATRIX, SELECTED_DIRAC_MATRIX_IDENTITY, TENSOR, Value } from "../Utils";
 
 const MatrixContainer = styled.div`
     display: flex;
@@ -41,8 +41,8 @@ const Matrix = (props) => {
         ))}
       </MatrixContainer>
       {
-        addTensor && <p>⊗</p>
-    }
+        addTensor && TENSOR
+      }
     </MatrixTensorContainer>
   );
 };

@@ -5,6 +5,8 @@ import { getStyling, NOT_SELECTED_CIRCUIT, NOT_SELECTED_CIRCUIT_IDENTITY, SELECT
 
 const Container = styled.div`
   color: #ffffff;
+  width: 30px;
+  height: 30px;
 `;
 
 const Name = styled.p`
@@ -17,7 +19,9 @@ const Gate = (props) => {
 
   return (
     <Container style={getStyling(gate, selected, gateType)}>
-      <Name>{gate}</Name>
+      {gate !== "" &&
+        <Name>{gate}</Name>
+    }
     </Container>
   );
 };
