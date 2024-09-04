@@ -45,6 +45,18 @@ const CodeContainer = (props) => {
 
   const getNotationResults = async () => {
 
+    setCircuitEquationBE([]);
+    setCircuitEquationLE([]);
+    setMatrixEquationBE([]);
+    setMatrixEquationLE([]);
+    setMatrixStateBE([]);
+    setMatrixStateLE([]);
+    setMatrixTensorProductEquationBE([]);    
+    setMatrixTensorProductEquationLE([]);
+
+    setDiracStateBE([]);
+    setDiracStateLE([]);
+
     const response = await axios
     .post("http://127.0.0.1:5000/get_notation_data", {
       headers: {

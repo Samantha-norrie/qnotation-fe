@@ -5,11 +5,23 @@ export const MATRIX_TITLE = "Matrix Notation";
 export const DIRAC_TITLE = "Dirac Notation";
 export const CIRCUIT_TITLE = "Circuit Notation";
 
-const MATRIX_INFO = "Matrix notation... ";
-const DIRAC_INFO = "Dirac notation... ";
+const MATRIX_INFO = "Matrix notation quantum states are represented as column vectors, with single-qubit states as 2x1 vectors and multi-qubit\
+ states as 2^n x 1 vectors, where n is the number of qubits. Quantum gates are represented by unitary matrices, with single-qubit gates as 2x2\
+  matrices and multi-qubit gates as 2^n x 2^n matrices. Operations on quantum states are performed through matrix multiplication, reading from\
+   right to left. ";
+const DIRAC_INFO = "Dirac notation, also known as bra-ket notation, is a standard notation used in quantum mechanics and quantum computing to\
+ describe quantum states and operations. In this notation, quantum states are represented by kets, denoted as |ψ⟩, which are column vectors\
+  in a complex Hilbert space. Operators are often expressed using outer products. Importantly, Dirac notation is read from right to left, \
+  contrary to conventional mathematical notation.";
 
-const CIRCUIT_INFO = "In circuit notation, the gates used to make up a quantum system are laid out from left to right and sit. \
-\nThe qubits used in the system sit on the leftmost side of the visualization. Wires stemming from these qubits connect to the gates...";
+const CIRCUIT_INFO = "Quantum circuit notation provides a visual representation of quantum computations, read from left to right like a timeline.\
+ The circuit begins on the left side, where qubits are typically initialized in their starting states. Each qubit is represented by a horizontal \
+ line, with the topmost line usually denoting the first qubit (often labeled q0). As you move right along these lines, you encounter various \
+ quantum gates and operations, represented by symbols or boxes, which manipulate the qubits' states. These operations are applied sequentially in \
+ the order they appear from left to right. The rightmost side of the circuit represents the final state of the qubits or their measurement outcomes.\
+  This left-to-right flow mimics the progression of time in the quantum computation, making it intuitive to follow the sequence of operations applied\
+  to the qubits throughout the algorithm."
+
 
 export const NOTATION_DETAILS = [
   {
@@ -27,7 +39,25 @@ export const NOTATION_DETAILS = [
 ];
 const ALGORITHM_GROVER_TITLE = "GROVER'S ALGORITHM";
 const ALGORITHM_GROVER_INFO = "info";
-const ALGORITHM_GROVER_CODE = "";
+const ALGORITHM_GROVER_CODE = 
+"from qiskit import *\n\
+import numpy as np \n\
+qc = QuantumCircuit(2)\n\
+\n\n\
+# Insert code below \n\
+\n\
+qc.h(0)\n\
+qc.h(1)\n\
+qc.cz(0, 1)\n\
+qc.h(0)\n\
+qc.h(1)\n\
+qc.x(0)\n\
+qc.x(1)\n\
+qc.cz(0, 1)\n\
+qc.x(0)\n\
+qc.x(1)\n\
+qc.h(0)\n\
+qc.h(1)\n";
 
 const ALGORITHM_TELEPORTATION_TITLE = "QUANTUM TELEPORTATION";
 const ALGORITHM_TELEPORTATION_INFO = "info";
@@ -62,6 +92,22 @@ qc.h(0)\n\
 qc.cx(0,1)\
 ";
 
+const ALGORITHM_QFT_TITLE = "Quantum Fourier Transform";
+const ALGORITHM_QFT_INFO = "INFO";
+const ALGORITHM_QFT_CODE = 
+"from qiskit import *\n\
+import numpy as np \n\
+qc = QuantumCircuit(3)\
+\n\n\
+# Insert code below \n\
+\n\
+qc.h(2)\n\
+qc.cp(np.pi/2, 1, 2)\n\
+qc.cp(np.pi/4, 0, 2)\n\
+qc.h(1)\n\
+qc.cp(np.pi/2, 0, 1)\n\
+qc.h(0)\n\
+";
 export const ALGORITHMS = [
   {
     title: ALGORITHM_GROVER_TITLE,
@@ -77,6 +123,11 @@ export const ALGORITHMS = [
     title: ALGORITHM_BELL_STATE_TITLE,
     info: ALGORITHM_BELL_STATE_INFO,
     code: ALGORITHM_BELL_STATE_CODE
+  },
+  {
+    title: ALGORITHM_QFT_TITLE,
+    info: ALGORITHM_QFT_INFO,
+    code: ALGORITHM_QFT_CODE
   }
 ];
 export const TabContainer = styled.div`
@@ -95,7 +146,7 @@ export const ScrollContainer = styled.div`
 export const EquationContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  align-items: center;
+  // align-items: center;
   flex-wrap: wrap;
 `;
 
@@ -105,8 +156,8 @@ export const StateContainer = styled.div`
 `;
 
 export const Value = styled.p`
-  // padding: 0;
-  // margin: 0.1rem;
+  padding: 0;
+  margin: 0.1rem;
   display: inline;
   text-align:center;
 `;
@@ -143,11 +194,11 @@ export const SELECTED_CIRCUIT_NEUTRAL = {
 };
 export const SELECTED_CIRCUIT_CONTROL = {
   "backgroundColor": "orangeRed",
-  "borderRadius": "1em"
+  "borderRadius": "0.25em"
 };
 export const SELECTED_CIRCUIT_TARGET = {
   "backgroundColor": "orangeRed",
-  "borderRadius": "5em"
+  "borderRadius": "0.25em"
 };
 export const SELECTED_CIRCUIT_BETWEEN = {
   "backgroundColor": "black",
@@ -167,13 +218,13 @@ export const NOT_SELECTED_CIRCUIT_NEUTRAL = {
 export const NOT_SELECTED_CIRCUIT_CONTROL = {
   "color": "black",
   "backgroundColor": "white",
-  "borderRadius": "1em"
+  "borderRadius": "0.25em"
 };
 
 export const NOT_SELECTED_CIRCUIT_TARGET = {
   "color": "black",
   "backgroundColor": "white",
-  "borderRadius": "5em"
+  "borderRadius": "0.25em"
 };
 
 export const NOT_SELECTED_CIRCUIT_BETWEEN = {
@@ -195,11 +246,11 @@ export const getStyling = (gate, selected, gateType=null) => {
   // For matrix and Dirac
   console.log("in styling", gate, selected, gateType);
   if (gateType === null) {
-    if (selected && gate != "I") {
+    if (selected && gate !== "I") {
       return SELECTED_DIRAC_MATRIX;
     } else if (selected) {
       return SELECTED_DIRAC_MATRIX_IDENTITY;
-    } else if (gate != "I") {
+    } else if (gate !== "I") {
       return NOT_SELECTED_DIRAC_MATRIX;
     } else {
       return NOT_SELECTED_DIRAC_MATRIX_IDENTITY;
@@ -222,6 +273,24 @@ export const getStyling = (gate, selected, gateType=null) => {
     }
 
     }
+}
+
+export const addTensorToDirac = (gates, index) => {
+  if (index === 0 && gates[index].gate_type === NEUTRAL_GATE_TYPE) {
+    return true;
+  } else if (gates !== null && index > 0 && index < gates.length-1 &&
+    gates[index].gate_type !== BETWEEN_GATE_TYPE) {
+      if (gates[index].gate_type === TARGET_GATE_TYPE || gates[index].gate_type === CONTROL_GATE_TYPE) {
+        for (let i = index; i < gates.length; i++) {
+          if (gates[i].gate_type !== BETWEEN_GATE_TYPE && i < gates.length-1) {
+            return true;
+          }
+        }
+      } else {
+        return true;
+      }
+  }
+  return false;
 }
 
 export const darkTheme = createTheme({
