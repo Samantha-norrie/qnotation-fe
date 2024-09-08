@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { createTheme } from '@mui/material/styles';
 
+// INFO ON APP AND NOTATIONS
+
 export const MATRIX_TITLE = "Matrix Notation";
 export const DIRAC_TITLE = "Dirac Notation";
 export const CIRCUIT_TITLE = "Circuit Notation";
+
+export const QNOTATION_INFO = "Welcome to QNotation! To get started, add gates to the QuantumCircuit object that has already been created in the code\
+ editor above, or choose one of the examples from the Examples dropdown.";
 
 const MATRIX_INFO = "Matrix notation quantum states are represented as column vectors, with single-qubit states as 2x1 vectors and multi-qubit\
  states as 2^n x 1 vectors, where n is the number of qubits. Quantum gates are represented by unitary matrices, with single-qubit gates as 2x2\
@@ -15,14 +20,16 @@ const DIRAC_INFO = "Dirac notation, also known as bra-ket notation, is a standar
   contrary to conventional mathematical notation.";
 
 const CIRCUIT_INFO = "Quantum circuit notation provides a visual representation of quantum computations, read from left to right like a timeline.\
- The circuit begins on the left side, where qubits are typically initialized in their starting states. Each qubit is represented by a horizontal \
+ The circuit begins on the left side, where qubits are typically initialized in their starting states.\n\n Each qubit is represented by a horizontal \
  line, with the topmost line usually denoting the first qubit (often labeled q0). As you move right along these lines, you encounter various \
- quantum gates and operations, represented by symbols or boxes, which manipulate the qubits' states. These operations are applied sequentially in \
+ quantum gates and operations, represented by symbols or boxes, which manipulate the qubits' states. \n\nThese operations are applied sequentially in \
  the order they appear from left to right. The rightmost side of the circuit represents the final state of the qubits or their measurement outcomes.\
   This left-to-right flow mimics the progression of time in the quantum computation, making it intuitive to follow the sequence of operations applied\
   to the qubits throughout the algorithm."
 
-
+export const UNKNOWN_ERROR = `You found an unknown error in QNotation! It was likely caused by a feature that hasn't been implemented yet. As this project is\
+ in beta and ongoing, this issue will likely be resolved soon! A list of features currently under construction can be found on our GitHub. Happy mathing!\
+\n\n-The QNotation Team`;
 export const NOTATION_DETAILS = [
   {
     title: CIRCUIT_TITLE,
@@ -37,6 +44,14 @@ export const NOTATION_DETAILS = [
     info: MATRIX_INFO
   },
 ];
+
+export const STARTING_CODE =
+  "from qiskit import *\n\
+import numpy as np \n\
+qc = QuantumCircuit(3)\
+\n\n\
+# Insert code below \n";
+
 const ALGORITHM_GROVER_TITLE = "GROVER'S ALGORITHM";
 const ALGORITHM_GROVER_INFO = "info";
 const ALGORITHM_GROVER_CODE = 
@@ -48,7 +63,9 @@ qc = QuantumCircuit(2)\n\
 \n\
 qc.h(0)\n\
 qc.h(1)\n\
-qc.cz(0, 1)\n\
+\n\n\
+# Mark |11> as the desired state\n\
+qc.cz(0, 1)\n\n\
 qc.h(0)\n\
 qc.h(1)\n\
 qc.x(0)\n\
@@ -56,8 +73,7 @@ qc.x(1)\n\
 qc.cz(0, 1)\n\
 qc.x(0)\n\
 qc.x(1)\n\
-qc.h(0)\n\
-qc.h(1)\n";
+";
 
 const ALGORITHM_TELEPORTATION_TITLE = "QUANTUM TELEPORTATION";
 const ALGORITHM_TELEPORTATION_INFO = "info";
@@ -108,28 +124,58 @@ qc.h(1)\n\
 qc.cp(np.pi/2, 0, 1)\n\
 qc.h(0)\n\
 ";
-export const ALGORITHMS = [
+
+const ALGORITHM_HERMITIAN_TITLE = "Hermitian Example (HH = I)";
+const ALGORITHM_HERMITIAN_INFO = "INFO";
+const ALGORITHM_HERMITIAN_CODE = 
+"from qiskit import *\n\
+import numpy as np \n\
+qc = QuantumCircuit(3)\
+\n\n\
+# Insert code below \n\
+\n\
+qc.h(0)\n\
+qc.h(1)\n\
+qc.h(2)\n\
+\n\
+qc.h(0)\n\
+qc.h(0)\n\
+qc.h(2)\n\
+";
+export const EXAMPLES = [
   {
     title: ALGORITHM_GROVER_TITLE,
     info: ALGORITHM_GROVER_INFO,
     code: ALGORITHM_GROVER_CODE
   },
-  {
-    title: ALGORITHM_TELEPORTATION_TITLE,
-    info: ALGORITHM_TELEPORTATION_INFO,
-    code: ALGORITHM_TELEPORTATION_CODE
-  },
+  // {
+  //   title: ALGORITHM_TELEPORTATION_TITLE,
+  //   info: ALGORITHM_TELEPORTATION_INFO,
+  //   code: ALGORITHM_TELEPORTATION_CODE
+  // },
   {
     title: ALGORITHM_BELL_STATE_TITLE,
     info: ALGORITHM_BELL_STATE_INFO,
     code: ALGORITHM_BELL_STATE_CODE
   },
   {
-    title: ALGORITHM_QFT_TITLE,
-    info: ALGORITHM_QFT_INFO,
-    code: ALGORITHM_QFT_CODE
+    title: ALGORITHM_HERMITIAN_TITLE,
+    info: ALGORITHM_HERMITIAN_INFO,
+    code: ALGORITHM_HERMITIAN_CODE
   }
+  // {
+  //   title: ALGORITHM_QFT_TITLE,
+  //   info: ALGORITHM_QFT_INFO,
+  //   code: ALGORITHM_QFT_CODE
+  // }
 ];
+
+// CSS AND AESTHETICS
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 export const TabContainer = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
@@ -146,7 +192,6 @@ export const ScrollContainer = styled.div`
 export const EquationContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  // align-items: center;
   flex-wrap: wrap;
 `;
 
@@ -201,7 +246,6 @@ export const SELECTED_CIRCUIT_TARGET = {
   "borderRadius": "0.25em"
 };
 export const SELECTED_CIRCUIT_BETWEEN = {
-  "backgroundColor": "black",
   "borderRadius": "0.25em"
 };
 export const SELECTED_CIRCUIT_IDENTITY = {
@@ -228,8 +272,6 @@ export const NOT_SELECTED_CIRCUIT_TARGET = {
 };
 
 export const NOT_SELECTED_CIRCUIT_BETWEEN = {
-  "color": "black",
-  "backgroundColor": "black",
   "borderRadius": "0.25em"
 };
 
@@ -242,7 +284,10 @@ export const BETWEEN_GATE_TYPE = "BETWEEN"
 export const CONTROL_GATE_TYPE = "CONTROL"
 export const TARGET_GATE_TYPE = "TARGET"
 
+// HELPER FUNCTIONS
+
 export const getStyling = (gate, selected, gateType=null) => {
+
   // For matrix and Dirac
   console.log("in styling", gate, selected, gateType);
   if (gateType === null) {
@@ -276,34 +321,18 @@ export const getStyling = (gate, selected, gateType=null) => {
 }
 
 export const addTensorToDirac = (gates, index) => {
-  if (index === 0 && gates[index].gate_type === NEUTRAL_GATE_TYPE) {
+
+
+  console.log("gates", gates);
+  if (gates[index].gate_type === BETWEEN_GATE_TYPE || index === gates.length-1) {
+    return false;
+  } else if (index < gates.length-1 && (gates[index+1].gate_type === BETWEEN_GATE_TYPE  || (gates[index].gate_type === TARGET_GATE_TYPE && gates[index+1].gate_type === CONTROL_GATE_TYPE))) {
+    return false;
+  } else if (index < gates.length-1 && (gates[index+1].gate_type === TARGET_GATE_TYPE && gates[index].gate_type === CONTROL_GATE_TYPE)) {
+    return false;
+  } else {
     return true;
-  } else if (gates !== null && index > 0 && index < gates.length-1 &&
-    gates[index].gate_type !== BETWEEN_GATE_TYPE) {
-      if (gates[index].gate_type === TARGET_GATE_TYPE || gates[index].gate_type === CONTROL_GATE_TYPE) {
-        for (let i = index; i < gates.length; i++) {
-          if (gates[i].gate_type !== BETWEEN_GATE_TYPE && i < gates.length-1) {
-            return true;
-          }
-        }
-      } else {
-        return true;
-      }
-  }
-  return false;
+  } 
 }
-
-export const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
-
-export const STARTING_CODE =
-  "from qiskit import *\n\
-import numpy as np \n\
-qc = QuantumCircuit(3)\
-\n\n\
-# Insert code below \n";
 
 

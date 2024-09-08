@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import styled from "styled-components";
 import NotationHeader from "./NotationHeader";
 import CircuitContainer from "./circuit/CircuitContainer";
@@ -29,14 +28,7 @@ const NotationBlock = (props) => {
     setCurrentIndex,
     displayTensorProduct,
     displayLittleEndian
-    // setDisableDisplayTensorProduct
   } = props;
-
-  // useEffect(() => {
-  //   console.log("in block");
-  //   console.log("matrix in block" + diracState.length);
-  //   console.log("TENSOR" + matrixTensorProductEquation);
-  // }, [matrixTensorProductEquation]);
 
   return (
     <Container>
@@ -68,7 +60,6 @@ const NotationBlock = (props) => {
             currentIndex={currentIndex}
             setCurrentIndex={setCurrentIndex}
             displayTensorProduct={displayTensorProduct}
-            // setDisableDisplayTensorProduct={setDisableDisplayTensorProduct}
           />
         </div>
       )}

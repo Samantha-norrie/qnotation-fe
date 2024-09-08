@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import NotationsContainer from "./components/NotationsContainer";
 import CodeContainer from "./components/CodeContainer";
-import HiddenNotationsColumn from "./components/HiddenNotationsColumn";
 import styled from "styled-components";
 import { useEffect } from "react";
 
@@ -11,24 +10,19 @@ const Container = styled.div`
   height: 100vh;
   display: grid;
   grid-template-rows: 100%;
-  grid-template-columns: 2% 68% 30%;
+  grid-template-columns: 70% 30%;
   overflow: hidden;
   color: white;
 `;
 
-const HiddenNotationsWrapper = styled.div`
+const NotationsContainerWrapper = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
 `;
 
-const NotationsContainerWrapper = styled.div`
+const CodeContainerWrapper = styled.div`
   grid-column-start: 2;
   grid-column-end: 3;
-`;
-
-const CodeContainerWrapper = styled.div`
-  grid-column-start: 3;
-  grid-column-end: 4;
 `;
 
 const AppContainer = () => {
@@ -51,15 +45,6 @@ const AppContainer = () => {
   }, [matrixTensorProductEquationLE]);
   return (
     <Container>
-      <HiddenNotationsWrapper>
-        <HiddenNotationsColumn
-          displayTensorProduct={displayTensorProduct}
-          setDisplayTensorProduct={setDisplayTensorProduct}
-          displayLittleEndian={displayLittleEndian}
-          setDisplayLittleEndian={setDisplayLittleEndian}
-          disableDisplayTensorProduct={disableDisplayTensorProduct}
-        />
-      </HiddenNotationsWrapper>
       <NotationsContainerWrapper>
         <NotationsContainer
           currentIndex={currentIndex}
@@ -90,8 +75,12 @@ const AppContainer = () => {
           setMatrixTensorProductEquationBE={setMatrixTensorProductEquationBE}
           setMatrixStateBE={setMatrixStateBE}
           setDiracStateBE={setDiracStateBE}
+          displayTensorProduct={displayTensorProduct}
+          setDisplayTensorProduct={setDisplayTensorProduct}
+          displayLittleEndian={displayLittleEndian}
+          setDisplayLittleEndian={setDisplayLittleEndian}
+          disableDisplayTensorProduct={disableDisplayTensorProduct}
           setDisableDisplayTensorProduct={setDisableDisplayTensorProduct}
-          // setDisplayLittleEndian={setDisplayLittleEndian}
         />
       </CodeContainerWrapper>
     </Container>

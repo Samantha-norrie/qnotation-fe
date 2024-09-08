@@ -10,7 +10,6 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    margin: 0rem .25rem;
     cursor: pointer; 
 `;
 
@@ -22,7 +21,7 @@ const Column = (props) => {
       {type === QUBIT && (
         <div>
           {content.map((gateDetails, index) => (
-            <Qubit qubit_value={gateDetails} index={index} selected={selected}/>
+              <Qubit qubit_value={gateDetails} index={index} selected={selected}/>
           ))}
         </div>
       )}

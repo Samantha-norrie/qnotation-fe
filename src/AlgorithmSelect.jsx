@@ -7,7 +7,7 @@ import { ThemeProvider} from '@mui/material/styles';
 
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import { ALGORITHMS } from "./components/Utils";
+import { EXAMPLES } from "./components/Utils";
 
 const AlgorithmSelect = (props) => {
     const {onCodeChange} = props;
@@ -15,13 +15,13 @@ const AlgorithmSelect = (props) => {
 
     const handleChange = (event) => {
         setAlgorithm(event.target.value);
-        onCodeChange(ALGORITHMS[event.target.value].code, ALGORITHMS[event.target.value].code);
+        onCodeChange(EXAMPLES[event.target.value].code, EXAMPLES[event.target.value].code);
     };
 
     return (
         <div>
             <ThemeProvider theme={darkTheme}>
-                <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
+                <FormControl sx={{ m: 1, width: "95%"}} size="small">
                 <InputLabel id="algorithm-label">ALGORITHM</InputLabel>
                 <Select
                     labelId="algorithm-label"
@@ -30,7 +30,7 @@ const AlgorithmSelect = (props) => {
                     // label="ALGORITHM"
                     onChange={handleChange}
                 >
-                    {ALGORITHMS.map((algorithm, key) => (
+                    {EXAMPLES.map((algorithm, key) => (
                         <MenuItem value={key}>{algorithm.title}</MenuItem>
                     ))}
                 </Select>

@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import InfoSharpIcon from "@mui/icons-material/InfoSharp";
 import { NOTATION_DETAILS } from "./Utils";
+import { useState } from "react";
 
 import styled from "styled-components";
 import NotationModal from "./NotationModal";
@@ -27,7 +28,7 @@ const Container = styled.div`
 `;
 
 const NotationHeader = (props) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { notation } = props;
@@ -39,10 +40,8 @@ const NotationHeader = (props) => {
       </p>
       <InfoSharpIcon onClick={handleOpen}></InfoSharpIcon>
       <Modal open={open} onClose={handleClose}>
-        {/* <NotationModal notation={Number(notation)}/> */}
         <Box sx={style}>
           <Typography sx={{ mt: 2 }}>
-            {/* {NOTATION_DETAILS[Number(notation)].info} */}
             <NotationModal notation={Number(notation)}/>
           </Typography>
         </Box>

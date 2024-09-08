@@ -1,28 +1,52 @@
 import React from "react";
-import { useEffect } from "react";
 import styled from "styled-components";
-import { getStyling, NOT_SELECTED_CIRCUIT, NOT_SELECTED_CIRCUIT_IDENTITY, SELECTED_CIRCUIT, SELECTED_CIRCUIT_IDENTITY } from "../Utils";
+import { CONTROL_GATE_TYPE, getStyling, NEUTRAL_GATE_TYPE, TARGET_GATE_TYPE } from "../Utils";
 
 const Container = styled.div`
   color: #ffffff;
   width: 30px;
   height: 30px;
+  border-radius: 0.25em;
+  grid-column-start: 1;
+  grid-column-end: 2;
+`;
+
+const Line = styled.div`
+    background-color: white;
+    height: 3px;
+    width: 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+`;
+const LineCoordinator = styled.div`
+    display: grid;
+    grid-template-columns: 30px 10px;
+    grid-template-rows: 100%;
+    align-items: center;
+    margin-top: 0.5em;
+
 `;
 
 const Name = styled.p`
   text-align: center;
-  padding: 0rem 0.25rem;
+  margin-block-start: 0em;
 `;
 
 const Gate = (props) => {
   const {gate, gateType, selected} = props;
 
   return (
-    <Container style={getStyling(gate, selected, gateType)}>
-      {gate !== "" &&
-        <Name>{gate}</Name>
-    }
-    </Container>
+    <LineCoordinator>
+      <Container style={getStyling(gate, selected, gateType)}>
+        <Name>
+        {
+          gateType === NEUTRAL_GATE_TYPE || gateType === CONTROL_GATE_TYPE? gate:
+            (gateType === TARGET_GATE_TYPE? "🎯": "")
+        }
+        </Name>
+      </Container>
+      <Line/>
+    </LineCoordinator>
   );
 };
 

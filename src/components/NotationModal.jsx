@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { NOTATION_DETAILS } from "./Utils";
 
 const NotationModal = (props) => {

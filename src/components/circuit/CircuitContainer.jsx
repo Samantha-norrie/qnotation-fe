@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Column from "./Column";
-import { NOT_SELECTED_CIRCUIT, SELECTED_CIRCUIT } from "../Utils";
 
 const Container = styled.div`
   display: flex;
@@ -14,8 +13,8 @@ const CircuitContainer = (props) => {
   const { circuitDetails, currentIndex, setCurrentIndex } = props;
   const changeIndex = (key) => {
     setCurrentIndex(key);
-    console.log("new key " + key);
   };
+  
   return (
     <Container>
       {circuitDetails.map((columnDetails, key) => (
