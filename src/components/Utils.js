@@ -65,14 +65,16 @@ qc.h(0)\n\
 qc.h(1)\n\
 \n\n\
 # Mark |11> as the desired state\n\
-qc.cz(0, 1)\n\n\
+qc.cx(0, 1)\n\n\
 qc.h(0)\n\
 qc.h(1)\n\
 qc.x(0)\n\
 qc.x(1)\n\
+qc.h(0)\n\
+qc.h(1)\n\
 qc.cz(0, 1)\n\
-qc.x(0)\n\
-qc.x(1)\n\
+qc.h(0)\n\
+qc.h(1)\n\
 ";
 
 const ALGORITHM_TELEPORTATION_TITLE = "QUANTUM TELEPORTATION";
@@ -125,7 +127,7 @@ qc.cp(np.pi/2, 0, 1)\n\
 qc.h(0)\n\
 ";
 
-const ALGORITHM_HERMITIAN_TITLE = "Hermitian Example (HH = I)";
+const ALGORITHM_HERMITIAN_TITLE = "HERMITIAN EXAMPLE (HH = I)";
 const ALGORITHM_HERMITIAN_INFO = "INFO";
 const ALGORITHM_HERMITIAN_CODE = 
 "from qiskit import *\n\
@@ -139,7 +141,7 @@ qc.h(1)\n\
 qc.h(2)\n\
 \n\
 qc.h(0)\n\
-qc.h(0)\n\
+qc.h(1)\n\
 qc.h(2)\n\
 ";
 export const EXAMPLES = [

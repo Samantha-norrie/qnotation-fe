@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React from "react";
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import { darkTheme } from "./components/Utils";
 import { ThemeProvider} from '@mui/material/styles';
@@ -22,12 +21,10 @@ const AlgorithmSelect = (props) => {
         <div>
             <ThemeProvider theme={darkTheme}>
                 <FormControl sx={{ m: 1, width: "95%"}} size="small">
-                <InputLabel id="algorithm-label">ALGORITHM</InputLabel>
+                <InputLabel id="algorithm-label">EXAMPLES</InputLabel>
                 <Select
                     labelId="algorithm-label"
-                    // id="demo-select-small"
                     value={algorithm}
-                    // label="ALGORITHM"
                     onChange={handleChange}
                 >
                     {EXAMPLES.map((algorithm, key) => (

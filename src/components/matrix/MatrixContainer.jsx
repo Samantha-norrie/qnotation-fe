@@ -33,13 +33,9 @@ const MatrixContainer = (props) => {
                   />
                 }
                 {key > 0 && 
-                  // <div onClick={() => changeIndex(key)}>
                     <TensorProduct onClick={() => changeIndex(key)} matrices={matrixSection.content} selected={key === currentIndex}/>
-                  // </div>
-                  // <TensorProduct onClick={() => changeIndex(key)} matrices={matrixSection.content} selected={key === currentIndex}/>
                 }
                 </div>
-                {/* <div onClick={() => changeIndex(key)}> */}
               </TensorProductContainer>
             ))}
             </EquationContainer> 
