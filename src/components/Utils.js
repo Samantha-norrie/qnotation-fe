@@ -65,7 +65,7 @@ qc.h(0)\n\
 qc.h(1)\n\
 \n\n\
 # Mark |11> as the desired state\n\
-qc.cx(0, 1)\n\n\
+qc.cz(0, 1)\n\n\
 qc.h(0)\n\
 qc.h(1)\n\
 qc.x(0)\n\
